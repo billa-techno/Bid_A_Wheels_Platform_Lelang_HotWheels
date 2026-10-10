@@ -1,0 +1,2185 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bid A Wheels - Platform Lelang Diecast HotWheels Terpercaya</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f5ff',
+                            100: '#e0ebff',
+                            500: '#2563eb',
+                            600: '#1d4ed8',
+                            800: '#1e3a8a',
+                            900: '#0b193c',
+                            950: '#060d21',
+                        },
+                        accent: {
+                            red: '#ef4444',
+                            gold: '#f59e0b',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Inter & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-nav {
+            background: rgba(11, 25, 60, 0.95);
+            backdrop-filter: blur(12px);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #0b193c 0%, #1d4ed8 60%, #1e40af 100%);
+        }
+        .badge-pulse {
+            animation: pulse-red 2s infinite;
+        }
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgba(11, 25, 60, 0.15), 0 8px 10px -6px rgba(11, 25, 60, 0.1);
+        }
+        /* Custom scrollbar for modals */
+        .custom-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 8px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+    <!-- NAVBAR SECTION -->
+    <header class="sticky top-0 z-50 glass-nav text-white border-b border-brand-800/40 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo Left -->
+            <a href="#" onclick="showMainPage()" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-orange-500 via-red-500 to-yellow-400 p-0.5 flex items-center justify-center shadow-md shadow-orange-500/30 group-hover:scale-105 transition-transform">
+                    <div class="w-full h-full bg-brand-900 rounded-full flex items-center justify-center">
+                        <i class="fa-solid fa-fire-flame-curved text-orange-400 text-lg"></i>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-extrabold text-xl tracking-tight leading-none text-white flex items-center gap-1">
+                        Bid A Wheels
+                    </span>
+                    <span class="text-[10px] text-gray-300 font-medium tracking-widest uppercase">Diecast Auction</span>
+                </div>
+            </a>
+
+            <!-- Center Navigation Links -->
+            <nav class="hidden lg:flex items-center space-x-1 xl:space-x-2 font-medium text-sm">
+                <a href="#" onclick="showMainPage()" class="px-4 py-2 rounded-lg text-white font-semibold bg-brand-800/60 hover:bg-brand-800 transition">Home</a>
+                <a href="#live-lelang" onclick="showMainPage()" class="px-4 py-2 rounded-lg text-gray-200 hover:text-white hover:bg-brand-800/40 transition">Live Lelang</a>
+                <a href="#lelang-mendatang" onclick="showMainPage()" class="px-4 py-2 rounded-lg text-gray-200 hover:text-white hover:bg-brand-800/40 transition">Lelang Mendatang</a>
+                <a href="#panduan" onclick="showMainPage()" class="px-4 py-2 rounded-lg text-gray-200 hover:text-white hover:bg-brand-800/40 transition">Panduan</a>
+                <a href="#artikel" onclick="showMainPage()" class="px-4 py-2 rounded-lg text-gray-200 hover:text-white hover:bg-brand-800/40 transition">Artikel</a>
+            </nav>
+
+            <!-- Right Utilities & Login -->
+            <div class="flex items-center gap-3">
+                <!-- Search Button -->
+                <button onclick="toggleModal('searchModal')" title="Cari Hotwheels" class="w-10 h-10 rounded-full bg-brand-800/50 hover:bg-brand-800 flex items-center justify-center text-gray-200 hover:text-white transition">
+                    <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                </button>
+
+                <!-- Notification Dropdown Toggle -->
+                <div class="relative">
+                    <button id="notifBtn" onclick="toggleDropdown('notifDropdown')" title="Notifikasi" class="w-10 h-10 rounded-full bg-brand-800/50 hover:bg-brand-800 flex items-center justify-center text-gray-200 hover:text-white transition relative">
+                        <i class="fa-solid fa-bell text-sm"></i>
+                        <span class="absolute top-2 right-2 w-2.5 h-2.5 bg-red-500 rounded-full ring-2 ring-brand-900"></span>
+                    </button>
+
+                    <!-- Notification Dropdown Menu -->
+                    <div id="notifDropdown" class="hidden absolute right-0 mt-3 w-80 sm:w-96 bg-white rounded-xl shadow-2xl border border-gray-100 py-2 z-50 text-gray-800">
+                        <div class="px-4 py-2.5 border-b border-gray-100 flex items-center justify-between">
+                            <h4 class="font-bold text-sm text-gray-900">Notifikasi Lelang</h4>
+                            <span class="text-xs bg-brand-50 text-brand-600 font-semibold px-2 py-0.5 rounded-full">1 Baru</span>
+                        </div>
+                        <div class="max-h-72 overflow-y-auto divide-y divide-gray-50">
+                            <a href="#" onclick="showMainPage()" class="p-3.5 hover:bg-brand-50/50 flex items-start gap-3 transition">
+                                <span class="w-2 h-2 mt-2 bg-brand-600 rounded-full flex-shrink-0"></span>
+                                <div>
+                                    <p class="text-xs font-semibold text-gray-900">Lelang Segera Berakhir</p>
+                                    <p class="text-xs text-gray-500 mt-0.5">Lamborghini Huracán LP 610-4 tinggal 15 menit lagi.</p>
+                                    <span class="text-[10px] text-gray-400 mt-1 block">12 menit lalu</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Login Button -->
+                <button onclick="toggleModal('loginModal')" class="bg-brand-600 hover:bg-brand-500 text-white font-medium text-sm px-5 py-2.5 rounded-xl shadow-md transition flex items-center gap-2">
+                    <i class="fa-regular fa-circle-user"></i>
+                    <span>Login</span>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileNav()" class="lg:hidden w-10 h-10 rounded-lg bg-brand-800/50 text-white flex items-center justify-center">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobileNav" class="hidden lg:hidden border-t border-brand-800 bg-brand-950 px-4 pt-3 pb-6 space-y-2">
+            <a href="#" onclick="showMainPage()" class="block px-3 py-2 rounded-lg text-white font-medium bg-brand-800">Home</a>
+            <a href="#live-lelang" onclick="showMainPage()" class="block px-3 py-2 rounded-lg text-gray-300 hover:bg-brand-800">Live Lelang</a>
+            <a href="#lelang-mendatang" onclick="showMainPage()" class="block px-3 py-2 rounded-lg text-gray-300 hover:bg-brand-800">Lelang Mendatang</a>
+            <a href="#panduan" onclick="showMainPage()" class="block px-3 py-2 rounded-lg text-gray-300 hover:bg-brand-800">Panduan</a>
+            <a href="#artikel" onclick="showMainPage()" class="block px-3 py-2 rounded-lg text-gray-300 hover:bg-brand-800">Artikel</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        
+        <!-- MAIN CATALOG PAGE VIEW -->
+        <div id="mainPageContainer">
+            
+            <!-- HERO SECTION -->
+            <section id="home" class="hero-gradient relative text-white py-12 md:py-16 overflow-hidden">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="bg-brand-900/60 backdrop-blur-md rounded-3xl p-6 sm:p-10 lg:p-12 border border-brand-500/20 shadow-2xl relative">
+                        <div class="absolute top-1/2 left-3/4 -translate-y-1/2 w-96 h-96 bg-brand-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                        <div class="grid lg:grid-cols-12 gap-8 items-center">
+                            <div class="lg:col-span-7 space-y-6">
+                                <div class="inline-flex items-center gap-2 bg-red-500/20 border border-red-500/40 px-3.5 py-1.5 rounded-full">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-red-500 badge-pulse"></span>
+                                    <span class="text-xs font-bold uppercase tracking-wide text-red-300">Live Action Auction</span>
+                                </div>
+
+                                <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight text-white">
+                                    Live Lelang <br/>
+                                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-sky-300 to-white">
+                                        Diecast HotWheels
+                                    </span>
+                                </h1>
+
+                                <p class="text-gray-300 text-base sm:text-lg max-w-xl font-normal leading-relaxed">
+                                    Dapatkan diecast impianmu dengan harga terbaik! Ikuti lelang secara real-time, tawar koleksi RLC & Rare, dan jadi pemenang tertinggi.
+                                </p>
+
+                                <div class="pt-2 flex flex-wrap items-center gap-4">
+                                    <a href="#live-lelang" class="bg-white text-brand-900 hover:bg-gray-100 font-bold px-7 py-3.5 rounded-full shadow-lg transition flex items-center gap-2 group text-sm sm:text-base">
+                                        <span>Lihat Semua Live Lelang</span>
+                                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                                    </a>
+                                    <a href="#panduan" class="bg-brand-800/70 hover:bg-brand-800 text-white border border-brand-500/30 font-medium px-6 py-3.5 rounded-full transition text-sm sm:text-base">
+                                        Cara Menawar
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Featured Hero Car Display -->
+                            <div class="lg:col-span-5 relative flex justify-center">
+                                <div class="relative w-full max-w-md lg:max-w-none">
+                                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-600/30 to-transparent rounded-2xl filter blur-xl"></div>
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1000&q=80" 
+                                        alt="HotWheels Porsche GT2 RS" 
+                                        class="w-full h-64 sm:h-80 lg:h-96 object-cover object-center rounded-2xl border border-white/10 shadow-2xl relative z-10 hover:scale-[1.02] transition-transform duration-500"
+                                        onerror="this.src='https://placehold.co/800x500/0b193c/ffffff?text=HotWheels+Rare+Edition'"
+                                    />
+                                    <div class="absolute bottom-4 left-4 right-4 z-20 bg-brand-950/80 backdrop-blur-md p-3.5 rounded-xl border border-white/10 flex items-center justify-between text-xs">
+                                        <div>
+                                            <p class="text-gray-400">Featured RLC Rare:</p>
+                                            <p class="font-bold text-white text-sm">Porsche 911 GT2 RS Silver Edition</p>
+                                        </div>
+                                        <span class="bg-brand-600 text-white px-2.5 py-1 rounded-md font-bold">RLC #01</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LIVE LELANG SECTION -->
+            <section id="live-lelang" class="py-16 bg-gray-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 gap-4 border-b border-gray-200 pb-5">
+                        <div>
+                            <div class="inline-flex items-center gap-2 text-red-600 font-bold text-xs uppercase tracking-wider mb-1">
+                                <span class="w-2 h-2 bg-red-600 rounded-full badge-pulse"></span>
+                                <span>Realtime Auction</span>
+                            </div>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">Live Lelang</h2>
+                            <p class="text-gray-600 mt-1 text-sm sm:text-base">Daftar lelang yang sedang berlangsung saat ini secara real-time.</p>
+                        </div>
+
+                        <!-- Underlined Text Link instead of Button -->
+                        <div>
+                            <a href="#live-lelang" onclick="scrollToLiveAuction()" class="underline font-bold text-brand-900 hover:text-brand-600 text-base sm:text-lg transition">
+                                Lihat semua >
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Grid Auction Cards -->
+                    <div id="auctionGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        
+                        <!-- Card 1 -->
+                        <div class="auction-card bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm card-hover flex flex-col">
+                            <div class="relative bg-gray-900 h-52 overflow-hidden">
+                                <span class="absolute top-3 left-3 z-10 bg-red-600 text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md flex items-center gap-1.5 shadow">
+                                    <span class="w-1.5 h-1.5 bg-white rounded-full badge-pulse"></span> LIVE
+                                </span>
+                                <div class="absolute top-3 right-3 z-10 flex gap-1.5">
+                                    <button onclick="toggleBookmark(this)" class="w-8 h-8 rounded-lg bg-black/50 hover:bg-black/80 text-white backdrop-blur-sm flex items-center justify-center transition">
+                                        <i class="fa-regular fa-bookmark text-xs"></i>
+                                    </button>
+                                    <button onclick="toggleFavorite(this)" class="w-8 h-8 rounded-lg bg-black/50 hover:bg-black/80 text-white backdrop-blur-sm flex items-center justify-center transition">
+                                        <i class="fa-regular fa-heart text-xs"></i>
+                                    </button>
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=800&q=80" alt="Lamborghini Huracán" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Lamborghini+Huracan'">
+                            </div>
+
+                            <div class="p-5 flex-grow flex flex-col justify-between space-y-4">
+                                <div>
+                                    <span class="text-[10px] uppercase font-bold text-brand-600 bg-brand-50 px-2 py-0.5 rounded">Supercar Series</span>
+                                    <h3 class="font-bold text-gray-900 text-base leading-snug line-clamp-2 mt-1 hover:text-brand-600 transition">
+                                        Hot Wheels x Supercar Blondie x Lamborghini Huracán LP 610-4
+                                    </h3>
+                                    <div class="mt-3 flex items-baseline justify-between">
+                                        <div>
+                                            <p class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Harga Awal</p>
+                                            <p class="text-xs text-gray-500 line-through">Rp 448.000</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-[10px] text-brand-600 uppercase tracking-wider font-bold">Harga Saat Ini</p>
+                                            <p class="text-xl font-black text-brand-900">Rp 548.000</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between text-xs text-gray-500 pt-2 border-t border-gray-100">
+                                    <span class="flex items-center gap-1.5 font-medium">
+                                        <i class="fa-solid fa-users text-gray-400"></i>
+                                        <span>12 penawar</span>
+                                    </span>
+                                    <span class="flex items-center gap-1.5 font-semibold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-md">
+                                        <i class="fa-regular fa-clock"></i>
+                                        <span class="timer-countdown" data-seconds="57540">15:59:00</span>
+                                    </span>
+                                </div>
+
+                                <button onclick="openDetailView(0)" class="w-full bg-brand-900 hover:bg-brand-800 text-white font-bold py-2.5 rounded-xl transition text-sm text-center shadow flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-circle-info text-xs"></i>
+                                    <span>Lihat Detail</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="auction-card bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm card-hover flex flex-col">
+                            <div class="relative bg-gray-900 h-52 overflow-hidden">
+                                <span class="absolute top-3 left-3 z-10 bg-red-600 text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md flex items-center gap-1.5 shadow">
+                                    <span class="w-1.5 h-1.5 bg-white rounded-full badge-pulse"></span> LIVE
+                                </span>
+                                <div class="absolute top-3 right-3 z-10 flex gap-1.5">
+                                    <button onclick="toggleBookmark(this)" class="w-8 h-8 rounded-lg bg-black/50 hover:bg-black/80 text-white backdrop-blur-sm flex items-center justify-center transition">
+                                        <i class="fa-regular fa-bookmark text-xs"></i>
+                                    </button>
+                                    <button onclick="toggleFavorite(this)" class="w-8 h-8 rounded-lg bg-black/50 hover:bg-black/80 text-white backdrop-blur-sm flex items-center justify-center transition">
+                                        <i class="fa-regular fa-heart text-xs"></i>
+                                    </button>
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Porsche 959" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Porsche+959'">
+                            </div>
+
+                            <div class="p-5 flex-grow flex flex-col justify-between space-y-4">
+                                <div>
+                                    <span class="text-[10px] uppercase font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded">RLC Exclusive</span>
+                                    <h3 class="font-bold text-gray-900 text-base leading-snug line-clamp-2 mt-1 hover:text-brand-600 transition">
+                                        RLC Exclusive sELECTIONs Porsche 959 Purple Edition
+                                    </h3>
+                                    <div class="mt-3 flex items-baseline justify-between">
+                                        <div>
+                                            <p class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Harga Awal</p>
+                                            <p class="text-xs text-gray-500 line-through">Rp 500.000</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-[10px] text-brand-600 uppercase tracking-wider font-bold">Harga Saat Ini</p>
+                                            <p class="text-xl font-black text-brand-900">Rp 650.000</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between text-xs text-gray-500 pt-2 border-t border-gray-100">
+                                    <span class="flex items-center gap-1.5 font-medium">
+                                        <i class="fa-solid fa-users text-gray-400"></i>
+                                        <span>15 penawar</span>
+                                    </span>
+                                    <span class="flex items-center gap-1.5 font-semibold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-md">
+                                        <i class="fa-regular fa-clock"></i>
+                                        <span class="timer-countdown" data-seconds="80400">22:20:00</span>
+                                    </span>
+                                </div>
+
+                                <button onclick="openDetailView(1)" class="w-full bg-brand-900 hover:bg-brand-800 text-white font-bold py-2.5 rounded-xl transition text-sm text-center shadow flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-circle-info text-xs"></i>
+                                    <span>Lihat Detail</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="auction-card bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm card-hover flex flex-col">
+                            <div class="relative bg-gray-900 h-52 overflow-hidden">
+                                <span class="absolute top-3 left-3 z-10 bg-red-600 text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md flex items-center gap-1.5 shadow">
+                                    <span class="w-1.5 h-1.5 bg-white rounded-full badge-pulse"></span> LIVE
+                                </span>
+                                <div class="absolute top-3 right-3 z-10 flex gap-1.5">
+                                    <button onclick="toggleBookmark(this)" class="w-8 h-8 rounded-lg bg-black/50 hover:bg-black/80 text-white backdrop-blur-sm flex items-center justify-center transition">
+                                        <i class="fa-regular fa-bookmark text-xs"></i>
+                                    </button>
+                                    <button onclick="toggleFavorite(this)" class="w-8 h-8 rounded-lg bg-black/50 hover:bg-black/80 text-white backdrop-blur-sm flex items-center justify-center transition">
+                                        <i class="fa-regular fa-heart text-xs"></i>
+                                    </button>
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80" alt="Porsche 911 GT1" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Porsche+911+GT1'">
+                            </div>
+
+                            <div class="p-5 flex-grow flex flex-col justify-between space-y-4">
+                                <div>
+                                    <span class="text-[10px] uppercase font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded">Collector Edition</span>
+                                    <h3 class="font-bold text-gray-900 text-base leading-snug line-clamp-2 mt-1 hover:text-brand-600 transition">
+                                        Hot Wheels x Robert Lewandowski x 1997 Porsche 911 GT1
+                                    </h3>
+                                    <div class="mt-3 flex items-baseline justify-between">
+                                        <div>
+                                            <p class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Harga Awal</p>
+                                            <p class="text-xs text-gray-500 line-through">Rp 448.000</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-[10px] text-brand-600 uppercase tracking-wider font-bold">Harga Saat Ini</p>
+                                            <p class="text-xl font-black text-brand-900">Rp 580.000</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between text-xs text-gray-500 pt-2 border-t border-gray-100">
+                                    <span class="flex items-center gap-1.5 font-medium">
+                                        <i class="fa-solid fa-users text-gray-400"></i>
+                                        <span>10 penawar</span>
+                                    </span>
+                                    <span class="flex items-center gap-1.5 font-semibold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-md">
+                                        <i class="fa-regular fa-clock"></i>
+                                        <span class="timer-countdown" data-seconds="73805">20:30:05</span>
+                                    </span>
+                                </div>
+
+                                <button onclick="openDetailView(2)" class="w-full bg-brand-900 hover:bg-brand-800 text-white font-bold py-2.5 rounded-xl transition text-sm text-center shadow flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-circle-info text-xs"></i>
+                                    <span>Lihat Detail</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="auction-card bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm card-hover flex flex-col">
+                            <div class="relative bg-gray-900 h-52 overflow-hidden">
+                                <span class="absolute top-3 left-3 z-10 bg-red-600 text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md flex items-center gap-1.5 shadow">
+                                    <span class="w-1.5 h-1.5 bg-white rounded-full badge-pulse"></span> LIVE
+                                </span>
+                                <div class="absolute top-3 right-3 z-10 flex gap-1.5">
+                                    <button onclick="toggleBookmark(this)" class="w-8 h-8 rounded-lg bg-black/50 hover:bg-black/80 text-white backdrop-blur-sm flex items-center justify-center transition">
+                                        <i class="fa-regular fa-bookmark text-xs"></i>
+                                    </button>
+                                    <button onclick="toggleFavorite(this)" class="w-8 h-8 rounded-lg bg-black/50 hover:bg-black/80 text-white backdrop-blur-sm flex items-center justify-center transition">
+                                        <i class="fa-regular fa-heart text-xs"></i>
+                                    </button>
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80" alt="BMW M3" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=BMW+M3+RLC'">
+                            </div>
+
+                            <div class="p-5 flex-grow flex flex-col justify-between space-y-4">
+                                <div>
+                                    <span class="text-[10px] uppercase font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">Vintage Series</span>
+                                    <h3 class="font-bold text-gray-900 text-base leading-snug line-clamp-2 mt-1 hover:text-brand-600 transition">
+                                        Hot Wheels RLC Exclusive 1991 BMW M3 E30 Olive Gold
+                                    </h3>
+                                    <div class="mt-3 flex items-baseline justify-between">
+                                        <div>
+                                            <p class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Harga Awal</p>
+                                            <p class="text-xs text-gray-500 line-through">Rp 600.000</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-[10px] text-brand-600 uppercase tracking-wider font-bold">Harga Saat Ini</p>
+                                            <p class="text-xl font-black text-brand-900">Rp 720.000</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between text-xs text-gray-500 pt-2 border-t border-gray-100">
+                                    <span class="flex items-center gap-1.5 font-medium">
+                                        <i class="fa-solid fa-users text-gray-400"></i>
+                                        <span>20 penawar</span>
+                                    </span>
+                                    <span class="flex items-center gap-1.5 font-semibold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-md">
+                                        <i class="fa-regular fa-clock"></i>
+                                        <span class="timer-countdown" data-seconds="63010">17:30:10</span>
+                                    </span>
+                                </div>
+
+                                <button onclick="openDetailView(3)" class="w-full bg-brand-900 hover:bg-brand-800 text-white font-bold py-2.5 rounded-xl transition text-sm text-center shadow flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-circle-info text-xs"></i>
+                                    <span>Lihat Detail</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="auction-card bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm card-hover flex flex-col">
+                            <div class="relative bg-gray-900 h-52 overflow-hidden">
+                                <span class="absolute top-3 left-3 z-10 bg-red-600 text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md flex items-center gap-1.5 shadow">
+                                    <span class="w-1.5 h-1.5 bg-white rounded-full badge-pulse"></span> LIVE
+                                </span>
+                                <div class="absolute top-3 right-3 z-10 flex gap-1.5">
+                                    <button onclick="toggleBookmark(this)" class="w-8 h-8 rounded-lg bg-black/50 hover:bg-black/80 text-white backdrop-blur-sm flex items-center justify-center transition">
+                                        <i class="fa-regular fa-bookmark text-xs"></i>
+                                    </button>
+                                    <button onclick="toggleFavorite(this)" class="w-8 h-8 rounded-lg bg-black/50 hover:bg-black/80 text-white backdrop-blur-sm flex items-center justify-center transition">
+                                        <i class="fa-regular fa-heart text-xs"></i>
+                                    </button>
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1541348263662-e082662d82da?auto=format&fit=crop&w=800&q=80" alt="Pagani Huayra R" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Pagani+Huayra+R'">
+                            </div>
+
+                            <div class="p-5 flex-grow flex flex-col justify-between space-y-4">
+                                <div>
+                                    <span class="text-[10px] uppercase font-bold text-sky-600 bg-sky-50 px-2 py-0.5 rounded">Hypercar Series</span>
+                                    <h3 class="font-bold text-gray-900 text-base leading-snug line-clamp-2 mt-1 hover:text-brand-600 transition">
+                                        Hot Wheels RLC Exclusive '21 Pagani Huayra R Silver
+                                    </h3>
+                                    <div class="mt-3 flex items-baseline justify-between">
+                                        <div>
+                                            <p class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Harga Awal</p>
+                                            <p class="text-xs text-gray-500 line-through">Rp 600.000</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-[10px] text-brand-600 uppercase tracking-wider font-bold">Harga Saat Ini</p>
+                                            <p class="text-xl font-black text-brand-900">Rp 810.000</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between text-xs text-gray-500 pt-2 border-t border-gray-100">
+                                    <span class="flex items-center gap-1.5 font-medium">
+                                        <i class="fa-solid fa-users text-gray-400"></i>
+                                        <span>30 penawar</span>
+                                    </span>
+                                    <span class="flex items-center gap-1.5 font-semibold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-md">
+                                        <i class="fa-regular fa-clock"></i>
+                                        <span class="timer-countdown" data-seconds="46945">13:03:25</span>
+                                    </span>
+                                </div>
+
+                                <button onclick="openDetailView(4)" class="w-full bg-brand-900 hover:bg-brand-800 text-white font-bold py-2.5 rounded-xl transition text-sm text-center shadow flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-circle-info text-xs"></i>
+                                    <span>Lihat Detail</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="auction-card bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm card-hover flex flex-col">
+                            <div class="relative bg-gray-900 h-52 overflow-hidden">
+                                <span class="absolute top-3 left-3 z-10 bg-red-600 text-white text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-md flex items-center gap-1.5 shadow">
+                                    <span class="w-1.5 h-1.5 bg-white rounded-full badge-pulse"></span> LIVE
+                                </span>
+                                <div class="absolute top-3 right-3 z-10 flex gap-1.5">
+                                    <button onclick="toggleBookmark(this)" class="w-8 h-8 rounded-lg bg-black/50 hover:bg-black/80 text-white backdrop-blur-sm flex items-center justify-center transition">
+                                        <i class="fa-regular fa-bookmark text-xs"></i>
+                                    </button>
+                                    <button onclick="toggleFavorite(this)" class="w-8 h-8 rounded-lg bg-black/50 hover:bg-black/80 text-white backdrop-blur-sm flex items-center justify-center transition">
+                                        <i class="fa-regular fa-heart text-xs"></i>
+                                    </button>
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=800&q=80" alt="Shelby Cobra" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Shelby+Cobra'">
+                            </div>
+
+                            <div class="p-5 flex-grow flex flex-col justify-between space-y-4">
+                                <div>
+                                    <span class="text-[10px] uppercase font-bold text-orange-600 bg-orange-50 px-2 py-0.5 rounded">Classic Muscle</span>
+                                    <h3 class="font-bold text-gray-900 text-base leading-snug line-clamp-2 mt-1 hover:text-brand-600 transition">
+                                        Hot Wheels RLC Exclusive 1965 Shelby Cobra 427 S/C
+                                    </h3>
+                                    <div class="mt-3 flex items-baseline justify-between">
+                                        <div>
+                                            <p class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Harga Awal</p>
+                                            <p class="text-xs text-gray-500 line-through">Rp 500.000</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-[10px] text-brand-600 uppercase tracking-wider font-bold">Harga Saat Ini</p>
+                                            <p class="text-xl font-black text-brand-900">Rp 640.000</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between text-xs text-gray-500 pt-2 border-t border-gray-100">
+                                    <span class="flex items-center gap-1.5 font-medium">
+                                        <i class="fa-solid fa-users text-gray-400"></i>
+                                        <span>25 penawar</span>
+                                    </span>
+                                    <span class="flex items-center gap-1.5 font-semibold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-md">
+                                        <i class="fa-regular fa-clock"></i>
+                                        <span class="timer-countdown" data-seconds="21341">05:29:01</span>
+                                    </span>
+                                </div>
+
+                                <button onclick="openDetailView(5)" class="w-full bg-brand-900 hover:bg-brand-800 text-white font-bold py-2.5 rounded-xl transition text-sm text-center shadow flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-circle-info text-xs"></i>
+                                    <span>Lihat Detail</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- LELANG AKAN SEGERA DIMULAI SECTION -->
+            <section id="lelang-mendatang" class="py-16 bg-white border-t border-gray-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                        <div>
+                            <div class="inline-flex items-center gap-2 text-brand-600 font-bold text-xs uppercase tracking-wider mb-2">
+                                <i class="fa-solid fa-calendar-days"></i>
+                                <span>Upcoming Auctions</span>
+                            </div>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">Lelang Akan Segera Dimulai</h2>
+                            <p class="text-gray-600 mt-1 text-sm sm:text-base">Pasang pengingat agar Anda tidak ketinggalan momen lelang diecast langka ini.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        
+                        <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden card-hover flex flex-col">
+                            <div class="relative h-48 bg-gray-900">
+                                <span class="absolute top-3 left-3 bg-brand-800 text-white text-[10px] font-bold px-2.5 py-1 rounded-md">
+                                    Start: Besok, 19:00 WIB
+                                </span>
+                                <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Nissan Skyline GT-R" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-5 flex-grow flex flex-col justify-between space-y-3">
+                                <div>
+                                    <span class="text-[10px] uppercase font-bold text-brand-600 bg-brand-50 px-2 py-0.5 rounded">RLC Super Chrome</span>
+                                    <h3 class="font-bold text-gray-900 text-base mt-2">Hot Wheels RLC Nissan Skyline GT-R (R34) Chrome</h3>
+                                    <p class="text-xs text-gray-500 mt-1">Estimasi Harga Awal: <span class="font-bold text-gray-900">Rp 350.000</span></p>
+                                </div>
+                                <button onclick="reminderAlert('Hot Wheels RLC Nissan Skyline GT-R (R34)')" class="w-full border border-brand-900 text-brand-900 hover:bg-brand-900 hover:text-white font-semibold py-2 rounded-xl transition text-xs flex items-center justify-center gap-2">
+                                    <i class="fa-regular fa-bell"></i>
+                                    <span>Ingatkan Saya</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden card-hover flex flex-col">
+                            <div class="relative h-48 bg-gray-900">
+                                <span class="absolute top-3 left-3 bg-brand-800 text-white text-[10px] font-bold px-2.5 py-1 rounded-md">
+                                    Start: Sabtu, 20:00 WIB
+                                </span>
+                                <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80" alt="Chevy Impala" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-5 flex-grow flex flex-col justify-between space-y-3">
+                                <div>
+                                    <span class="text-[10px] uppercase font-bold text-brand-600 bg-brand-50 px-2 py-0.5 rounded">STH Super Treasure Hunt</span>
+                                    <h3 class="font-bold text-gray-900 text-base mt-2">Hot Wheels 1964 Chevy Impala Lowrider Gold</h3>
+                                    <p class="text-xs text-gray-500 mt-1">Estimasi Harga Awal: <span class="font-bold text-gray-900">Rp 400.000</span></p>
+                                </div>
+                                <button onclick="reminderAlert('Hot Wheels 1964 Chevy Impala Lowrider')" class="w-full border border-brand-900 text-brand-900 hover:bg-brand-900 hover:text-white font-semibold py-2 rounded-xl transition text-xs flex items-center justify-center gap-2">
+                                    <i class="fa-regular fa-bell"></i>
+                                    <span>Ingatkan Saya</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 rounded-2xl border border-gray-200 overflow-hidden card-hover flex flex-col">
+                            <div class="relative h-48 bg-gray-900">
+                                <span class="absolute top-3 left-3 bg-brand-800 text-white text-[10px] font-bold px-2.5 py-1 rounded-md">
+                                    Start: Minggu, 14:00 WIB
+                                </span>
+                                <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80" alt="Ford Mustang" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-5 flex-grow flex flex-col justify-between space-y-3">
+                                <div>
+                                    <span class="text-[10px] uppercase font-bold text-brand-600 bg-brand-50 px-2 py-0.5 rounded">Convention Exclusive</span>
+                                    <h3 class="font-bold text-gray-900 text-base mt-2">Hot Wheels 1969 Ford Mustang Boss 302 LA Convention</h3>
+                                    <p class="text-xs text-gray-500 mt-1">Estimasi Harga Awal: <span class="font-bold text-gray-900">Rp 750.000</span></p>
+                                </div>
+                                <button onclick="reminderAlert('Hot Wheels 1969 Ford Mustang Boss 302')" class="w-full border border-brand-900 text-brand-900 hover:bg-brand-900 hover:text-white font-semibold py-2 rounded-xl transition text-xs flex items-center justify-center gap-2">
+                                    <i class="fa-regular fa-bell"></i>
+                                    <span>Ingatkan Saya</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- KENAPA BID A WHEELS SECTION -->
+            <section class="py-16 bg-gradient-to-b from-brand-900 to-brand-950 text-white relative overflow-hidden">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center max-w-2xl mx-auto mb-14">
+                        <span class="text-blue-400 font-bold text-xs uppercase tracking-widest bg-blue-500/10 px-3.5 py-1 rounded-full border border-blue-500/20">Keunggulan Utama</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold mt-3 tracking-tight">Kenapa Bid A Wheels?</h2>
+                        <p class="text-gray-300 mt-2 text-sm sm:text-base">Komitmen kami menyajikan pengalaman lelang diecast Hot Wheels yang paling transparan, aman, dan memuaskan bagi seluruh kolektor.</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="bg-brand-900/80 rounded-2xl p-8 border border-brand-800/80 shadow-xl flex flex-col items-start">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center text-white text-2xl shadow-lg shadow-blue-500/20 mb-6">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">100% Otentik & Terverifikasi Tim Ahli</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Setiap unit diecast Hot Wheels melewati proses verifikasi fisik & hologram ketat oleh Kurator Kolektor Senior sebelum ditayangkan dalam lelang.
+                            </p>
+                        </div>
+
+                        <div class="bg-brand-900/80 rounded-2xl p-8 border border-brand-800/80 shadow-xl flex flex-col items-start">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white text-2xl shadow-lg shadow-emerald-500/20 mb-6">
+                                <i class="fa-solid fa-lock-keyhole"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Sistem Rekber (Escrow) Otomatis Aman</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Dana pemenang lelang ditahan dengan aman. Penjual hanya akan menerima pembayaran setelah pembeli menerima & mengonfirmasi kondisi diecast.
+                            </p>
+                        </div>
+
+                        <div class="bg-brand-900/80 rounded-2xl p-8 border border-brand-800/80 shadow-xl flex flex-col items-start">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-orange-500 to-yellow-400 flex items-center justify-center text-white text-2xl shadow-lg shadow-orange-500/20 mb-6">
+                                <i class="fa-solid fa-box-open"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Pengiriman Safepack Proteksi Ekstra</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Kami mewajibkan penggunaan protector blister, double bubble wrap, serta kardus tebal untuk menjamin bubble diecast tiba tanpa penyok.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STATISTIK KOLEKTOR SECTION -->
+            <section class="py-12 bg-brand-950 border-t border-brand-800/50 text-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                        <div class="p-4 bg-brand-900/40 rounded-xl border border-brand-800/50">
+                            <p class="text-3xl sm:text-4xl font-black text-blue-400">15,000+</p>
+                            <p class="text-xs sm:text-sm text-gray-300 mt-1 font-medium">Lelang Berhasil</p>
+                        </div>
+                        <div class="p-4 bg-brand-900/40 rounded-xl border border-brand-800/50">
+                            <p class="text-3xl sm:text-4xl font-black text-blue-400">99.8%</p>
+                            <p class="text-xs sm:text-sm text-gray-300 mt-1 font-medium">Tingkat Kepuasan</p>
+                        </div>
+                        <div class="p-4 bg-brand-900/40 rounded-xl border border-brand-800/50">
+                            <p class="text-3xl sm:text-4xl font-black text-blue-400">2,500+</p>
+                            <p class="text-xs sm:text-sm text-gray-300 mt-1 font-medium">Hot Wheels RLC & Rare</p>
+                        </div>
+                        <div class="p-4 bg-brand-900/40 rounded-xl border border-brand-800/50">
+                            <p class="text-3xl sm:text-4xl font-black text-blue-400">10,000+</p>
+                            <p class="text-xs sm:text-sm text-gray-300 mt-1 font-medium">Kolektor Aktif</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TESTIMONI SECTION -->
+            <section class="py-16 bg-gray-50 overflow-hidden">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10">
+                        <div>
+                            <span class="text-brand-600 font-bold text-xs uppercase tracking-wider">Ulasan Pengguna</span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight mt-1">Testimoni Kolektor</h2>
+                            <p class="text-gray-600 text-sm mt-1">Apa kata para kolektor yang telah berhasil menang lelang di Bid A Wheels.</p>
+                        </div>
+
+                        <div class="flex items-center gap-3 mt-4 sm:mt-0">
+                            <button onclick="moveTestimonial(-1)" class="w-11 h-11 rounded-full bg-white border border-gray-200 text-gray-700 hover:bg-brand-900 hover:text-white transition flex items-center justify-center shadow-sm">
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </button>
+                            <button onclick="moveTestimonial(1)" class="w-11 h-11 rounded-full bg-white border border-gray-200 text-gray-700 hover:bg-brand-900 hover:text-white transition flex items-center justify-center shadow-sm">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div id="testiContainer" class="grid md:grid-cols-3 gap-6 transition-all duration-500">
+                            <div class="testi-card bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between">
+                                <div>
+                                    <div class="flex text-amber-400 text-sm gap-1 mb-3">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <p class="text-gray-700 text-sm leading-relaxed italic">
+                                        "Akhirnya nemu RLC Porsche 959 impian dengan kondisi blister super mint! Sistem lelangnya transparan banget, real-time tanpa delay."
+                                    </p>
+                                </div>
+                                <div class="flex items-center gap-3 mt-6 pt-4 border-t border-gray-100">
+                                    <div class="w-10 h-10 rounded-full bg-brand-100 font-bold text-brand-800 flex items-center justify-center text-sm">
+                                        BH
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900 text-sm">Budi Hermawan</h4>
+                                        <p class="text-xs text-gray-500">Kolektor Hotwheels Bandung</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testi-card bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between">
+                                <div>
+                                    <div class="flex text-amber-400 text-sm gap-1 mb-3">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <p class="text-gray-700 text-sm leading-relaxed italic">
+                                        "Sebagai penjual diecast rare, lelang di Bid A Wheels bikin jualan jadi lebih cepat dan dapat harga pasar yang fair. Rekber aman, cairnya cepat!"
+                                    </p>
+                                </div>
+                                <div class="flex items-center gap-3 mt-6 pt-4 border-t border-gray-100">
+                                    <div class="w-10 h-10 rounded-full bg-brand-100 font-bold text-brand-800 flex items-center justify-center text-sm">
+                                        AP
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900 text-sm">Andi Pratama</h4>
+                                        <p class="text-xs text-gray-500">Kolektor & Seller Jakarta</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="testi-card bg-white p-6 rounded-2xl border border-gray-200 shadow-sm flex flex-col justify-between">
+                                <div>
+                                    <div class="flex text-amber-400 text-sm gap-1 mb-3">
+                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <p class="text-gray-700 text-sm leading-relaxed italic">
+                                        "Suka banget sama fitur notifikasi bid terlampauinya. Tadi malam bisa sniped RLC BMW M3 di detik-detik terakhir. Website lelang HotWheels terbaik!"
+                                    </p>
+                                </div>
+                                <div class="flex items-center gap-3 mt-6 pt-4 border-t border-gray-100">
+                                    <div class="w-10 h-10 rounded-full bg-brand-100 font-bold text-brand-800 flex items-center justify-center text-sm">
+                                        RS
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900 text-sm">Rian Santoso</h4>
+                                        <p class="text-xs text-gray-500">Diecast Enthusiast Surabaya</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PANDUAN & ARTIKEL SECTION -->
+            <section id="panduan" class="py-16 bg-white border-b border-gray-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <span class="text-brand-600 font-bold text-xs uppercase tracking-wider">Panduan Lelang</span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-1">4 Langkah Mudah Ikut Lelang</h2>
+                            <div class="mt-6 space-y-4">
+                                <div class="flex items-start gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100">
+                                    <div class="w-8 h-8 rounded-full bg-brand-900 text-white font-bold flex items-center justify-center flex-shrink-0 text-sm">1</div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900 text-sm">Daftar Akun & Verifikasi</h4>
+                                        <p class="text-xs text-gray-600 mt-0.5">Buat akun Bid A Wheels dan lengkapi profil untuk mulai memberikan penawaran.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100">
+                                    <div class="w-8 h-8 rounded-full bg-brand-900 text-white font-bold flex items-center justify-center flex-shrink-0 text-sm">2</div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900 text-sm">Pilih Diecast & Pasang Bid</h4>
+                                        <p class="text-xs text-gray-600 mt-0.5">Cari unit HotWheels favoritmu, pantau timer, dan masukkan nominal penawaran.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100">
+                                    <div class="w-8 h-8 rounded-full bg-brand-900 text-white font-bold flex items-center justify-center flex-shrink-0 text-sm">3</div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900 text-sm">Menangkan Lelang & Bayar</h4>
+                                        <p class="text-xs text-gray-600 mt-0.5">Jika menjadi penawar tertinggi saat waktu habis, selesaikan pembayaran via (QRIS, E-Wallet, Transfer Bank).</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4 p-4 rounded-xl bg-gray-50 border border-gray-100">
+                                    <div class="w-8 h-8 rounded-full bg-brand-900 text-white font-bold flex items-center justify-center flex-shrink-0 text-sm">4</div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900 text-sm">Terima Paket Safepack</h4>
+                                        <p class="text-xs text-gray-600 mt-0.5">Barang dikirim dengan proteksi ekstra. Konfirmasi penerimaan dan transaksi selesai!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="artikel" class="bg-gray-50 p-6 sm:p-8 rounded-2xl border border-gray-200">
+                            <span class="text-brand-600 font-bold text-xs uppercase tracking-wider">Artikel & Berita</span>
+                            <h2 class="text-2xl font-extrabold text-gray-900 mt-1 mb-6">Seputar Dunia Diecast</h2>
+                            
+                            <div class="space-y-4">
+                                <article class="bg-white p-4 rounded-xl border border-gray-200 flex gap-4 hover:shadow-sm transition">
+                                    <div class="w-20 h-20 rounded-lg bg-gray-200 flex-shrink-0 overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=300&q=80" class="w-full h-full object-cover">
+                                    </div>
+                                    <div>
+                                        <span class="text-[10px] text-brand-600 font-bold uppercase">Tips Kolektor</span>
+                                        <h3 class="font-bold text-gray-900 text-sm line-clamp-1 hover:text-brand-600 cursor-pointer">Cara Membedakan Hot Wheels RLC Asli vs Custom</h3>
+                                        <p class="text-xs text-gray-500 mt-1 line-clamp-2">Panduan lengkap mengecek spesifikasi blister, cat spectraflame, dan nomor seri RLC...</p>
+                                    </div>
+                                </article>
+
+                                <article class="bg-white p-4 rounded-xl border border-gray-200 flex gap-4 hover:shadow-sm transition">
+                                    <div class="w-20 h-20 rounded-lg bg-gray-200 flex-shrink-0 overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=300&q=80" class="w-full h-full object-cover">
+                                    </div>
+                                    <div>
+                                        <span class="text-[10px] text-brand-600 font-bold uppercase">Market Insight</span>
+                                        <h3 class="font-bold text-gray-900 text-sm line-clamp-1 hover:text-brand-600 cursor-pointer">5 Hot Wheels Super Treasure Hunt Paling Dicari 2026</h3>
+                                        <p class="text-xs text-gray-500 mt-1 line-clamp-2">Daftar STH dengan kenaikan harga tertinggi di pasar lelang internasional...</p>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div> <!-- END MAIN CATALOG CONTAINER -->
+
+        <!-- DETAIL LELANG VIEW (NEW PAGE VIEW) -->
+        <div id="detailPageContainer" class="hidden py-8 bg-gray-50 min-h-screen">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Breadcrumb Navigation -->
+                <nav class="flex items-center gap-2 text-xs text-gray-500 mb-6">
+                    <button onclick="showMainPage()" class="hover:text-brand-600 flex items-center gap-1 font-medium">
+                        <i class="fa-solid fa-house text-[10px]"></i> Home
+                    </button>
+                    <i class="fa-solid fa-chevron-right text-[10px] text-gray-300"></i>
+                    <a href="#live-lelang" onclick="showMainPage()" class="hover:text-brand-600 font-medium">Live Lelang</a>
+                    <i class="fa-solid fa-chevron-right text-[10px] text-gray-300"></i>
+                    <span id="detailBreadcrumbName" class="text-gray-900 font-bold truncate max-w-xs">Nama Item</span>
+                </nav>
+
+                <!-- Back Button -->
+                <div class="mb-6">
+                    <button onclick="showMainPage()" class="inline-flex items-center gap-2 bg-white hover:bg-gray-100 text-gray-800 border border-gray-200 font-bold px-4 py-2 rounded-xl transition text-xs shadow-sm">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        <span>Kembali ke Katalog Lelang</span>
+                    </button>
+                </div>
+
+                <!-- Product Detail Grid -->
+                <div class="grid lg:grid-cols-12 gap-8 items-start">
+                    
+                    <!-- Left Column: 4 Photo Gallery & Detailed Description -->
+                    <div class="lg:col-span-7 space-y-6">
+                        
+                        <!-- Image Gallery Box -->
+                        <div class="bg-white rounded-3xl p-4 sm:p-6 border border-gray-200 shadow-sm space-y-4">
+                            <!-- Main Active Image -->
+                            <div class="relative bg-gray-900 rounded-2xl h-80 sm:h-96 overflow-hidden border border-gray-100">
+                                <span class="absolute top-4 left-4 z-10 bg-red-600 text-white text-xs font-extrabold uppercase px-3 py-1 rounded-md flex items-center gap-1.5 shadow">
+                                    <span class="w-2 h-2 bg-white rounded-full badge-pulse"></span> LIVE AUCTION
+                                </span>
+                                <span id="detailCategoryBadge" class="absolute top-4 right-4 z-10 bg-brand-900/80 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-md">
+                                    Supercar Series
+                                </span>
+                                <img id="detailMainImg" src="" alt="Main Image" class="w-full h-full object-cover object-center transition-all duration-300">
+                            </div>
+
+                            <!-- 4 Thumbnail Selector Images -->
+                            <div class="grid grid-cols-4 gap-3">
+                                <button onclick="selectGalleryImg(0)" class="thumb-btn border-2 border-brand-600 rounded-xl overflow-hidden h-20 bg-gray-100 focus:outline-none transition">
+                                    <img id="thumbImg0" src="" class="w-full h-full object-cover">
+                                </button>
+                                <button onclick="selectGalleryImg(1)" class="thumb-btn border-2 border-transparent rounded-xl overflow-hidden h-20 bg-gray-100 focus:outline-none transition opacity-70 hover:opacity-100">
+                                    <img id="thumbImg1" src="" class="w-full h-full object-cover">
+                                </button>
+                                <button onclick="selectGalleryImg(2)" class="thumb-btn border-2 border-transparent rounded-xl overflow-hidden h-20 bg-gray-100 focus:outline-none transition opacity-70 hover:opacity-100">
+                                    <img id="thumbImg2" src="" class="w-full h-full object-cover">
+                                </button>
+                                <button onclick="selectGalleryImg(3)" class="thumb-btn border-2 border-transparent rounded-xl overflow-hidden h-20 bg-gray-100 focus:outline-none transition opacity-70 hover:opacity-100">
+                                    <img id="thumbImg3" src="" class="w-full h-full object-cover">
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Product Detailed Specs Card -->
+                        <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm space-y-6">
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-900 border-b border-gray-100 pb-3 flex items-center gap-2">
+                                    <i class="fa-solid fa-list-check text-brand-600"></i>
+                                    <span>Detail Produk & Spesifikasi</span>
+                                </h3>
+                                <p id="detailDescription" class="text-sm text-gray-600 mt-3 leading-relaxed">
+                                    Deskripsi singkat diecast akan dimuat di sini...
+                                </p>
+                            </div>
+
+                            <!-- Specs Grid Table -->
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 bg-gray-50 p-4 rounded-2xl border border-gray-100">
+                                <div>
+                                    <p class="text-xs text-gray-400 font-medium">Nama Item</p>
+                                    <p id="specItemName" class="text-xs sm:text-sm font-bold text-gray-900 mt-0.5 truncate">Porsche GT1</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400 font-medium">Skala</p>
+                                    <p id="specScale" class="text-xs sm:text-sm font-bold text-gray-900 mt-0.5">1 : 64</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400 font-medium">Kondisi Card</p>
+                                    <p id="specCardCondition" class="text-xs sm:text-sm font-bold text-emerald-600 mt-0.5">Mint on Card (9.5/10)</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400 font-medium">Kategori</p>
+                                    <p id="specCategory" class="text-xs sm:text-sm font-bold text-gray-900 mt-0.5">RLC Special</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400 font-medium">Protektor Blister</p>
+                                    <p class="text-xs sm:text-sm font-bold text-gray-900 mt-0.5">Termasuk (Free)</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400 font-medium">Garansi Keaslian</p>
+                                    <p class="text-xs sm:text-sm font-bold text-blue-600 mt-0.5">100% Original</p>
+                                </div>
+                            </div>
+
+                            <!-- Terms & Conditions Section -->
+                            <div class="pt-2">
+                                <h4 class="text-sm font-bold text-gray-900 mb-2 flex items-center gap-1.5">
+                                    <i class="fa-solid fa-file-contract text-gray-400"></i>
+                                    <span>Syarat & Ketentuan Lelang:</span>
+                                </h4>
+                                <ul class="text-xs text-gray-600 space-y-1.5 list-disc pl-4 leading-relaxed">
+                                    <li>Setiap penawaran (bid) bersifat mengikat dan tidak dapat dibatalkan.</li>
+                                    <li>Pemenang wajib melunasi pembayaran maksimal 1x24 jam setelah lelang berakhir.</li>
+                                    <li>Pengiriman menggunakan proteksi standar Safepack (Bubble + Dus tebal).</li>
+                                    <li>Transaksi dijamin aman menggunakan Rekening Bersama (Rekber) Bid A Wheels.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: Bidding Controls & Seller Info -->
+                    <div class="lg:col-span-5 space-y-6">
+                        
+                        <!-- Pricing & Action Card -->
+                        <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-lg space-y-6 sticky top-24">
+                            <div>
+                                <h2 id="detailTitle" class="text-xl font-extrabold text-gray-900 leading-snug">
+                                    Nama Mobil Hotwheels
+                                </h2>
+                                <div class="flex items-center gap-2 mt-2">
+                                    <span id="detailBadgeCategory" class="text-xs font-bold uppercase bg-brand-50 text-brand-600 px-2.5 py-0.5 rounded-full">
+                                        Category
+                                    </span>
+                                    <span class="text-xs text-gray-400">• Verified Seller Auction</span>
+                                </div>
+                            </div>
+
+                            <!-- Price Comparison & Timer Display -->
+                            <div class="bg-gradient-to-r from-brand-900 to-brand-950 p-5 rounded-2xl text-white space-y-4 shadow-md">
+                                <div class="flex items-center justify-between border-b border-brand-800/80 pb-3">
+                                    <div>
+                                        <p class="text-xs text-gray-300 font-medium">Harga Awal</p>
+                                        <p id="detailStartPrice" class="text-sm font-semibold text-gray-300 line-through">Rp 448.000</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="text-xs text-amber-400 font-bold uppercase tracking-wider">Harga Saat Ini</p>
+                                        <p id="detailCurrentPrice" class="text-2xl sm:text-3xl font-black text-amber-400">Rp 548.000</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-gray-300 flex items-center gap-1.5">
+                                        <i class="fa-solid fa-chart-line text-emerald-400"></i>
+                                        <span id="detailBidCountText">Naik Rp 100.000 (8 penawaran)</span>
+                                    </span>
+                                    <span class="bg-red-500/20 text-red-300 border border-red-500/40 px-2.5 py-1 rounded-lg font-bold flex items-center gap-1">
+                                        <i class="fa-regular fa-clock"></i>
+                                        <span id="detailTimerDisplay" class="timer-countdown" data-seconds="57540">15:59:00</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Primary Action Button: Pasang Bid -->
+                            <div>
+                                <button onclick="handlePasangBidClick()" class="w-full bg-brand-600 hover:bg-brand-500 text-white font-extrabold py-4 rounded-2xl transition shadow-lg text-base flex items-center justify-center gap-2 group">
+                                    <i class="fa-solid fa-gavel text-lg group-hover:rotate-12 transition-transform"></i>
+                                    <span>Pasang Bid Sekarang</span>
+                                </button>
+                                <p class="text-[11px] text-center text-gray-400 mt-2">
+                                    <i class="fa-solid fa-shield-halved text-brand-600"></i> Jaminan Rekber Transaksi Aman 100%
+                                </p>
+                            </div>
+
+                            <!-- Seller Info Label Section -->
+                            <div class="bg-gray-50 rounded-2xl p-4 border border-gray-200 space-y-3">
+                                <p class="text-xs font-bold uppercase text-gray-400 tracking-wider">Informasi Penjual</p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-12 h-12 rounded-full bg-brand-900 text-white font-black flex items-center justify-center text-base shadow">
+                                            <i class="fa-solid fa-store"></i>
+                                        </div>
+                                        <div>
+                                            <div class="flex items-center gap-1.5">
+                                                <h4 id="sellerStoreName" class="font-bold text-gray-900 text-sm">Diecast Garage Official</h4>
+                                                <i class="fa-solid fa-circle-check text-blue-500 text-xs" title="Verified Seller"></i>
+                                            </div>
+                                            <div class="flex items-center gap-1 text-xs text-amber-500 mt-0.5">
+                                                <i class="fa-solid fa-star"></i>
+                                                <span id="sellerRating" class="font-bold text-gray-900">4.9 / 5.0</span>
+                                                <span class="text-gray-400 font-normal">(240 Ulasan)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Seller Chat Button -->
+                                    <button onclick="triggerSellerChat()" class="bg-white hover:bg-gray-100 text-brand-800 border border-gray-300 font-bold px-3.5 py-2 rounded-xl text-xs transition shadow-sm flex items-center gap-1.5">
+                                        <i class="fa-regular fa-comments text-brand-600 text-sm"></i>
+                                        <span>Chat</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Activity / Bid Log Summary -->
+                            <div class="border-t border-gray-100 pt-4">
+                                <h4 class="text-xs font-bold text-gray-900 uppercase tracking-wider mb-3">
+                                    Riwayat Penawaran Terakhir:
+                                </h4>
+                                <div id="detailBidHistoryList" class="space-y-2 max-h-40 overflow-y-auto pr-1 text-xs">
+                                    <div class="flex justify-between items-center bg-gray-50 p-2 rounded-lg">
+                                        <span class="font-bold text-gray-800">Budi H.</span>
+                                        <span class="font-bold text-brand-900">Rp 548.000</span>
+                                        <span class="text-[10px] text-gray-400">2 mnt lalu</span>
+                                    </div>
+                                    <div class="flex justify-between items-center p-2 rounded-lg text-gray-500">
+                                        <span>Andi P.</span>
+                                        <span>Rp 520.000</span>
+                                        <span class="text-[10px] text-gray-400">10 mnt lalu</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div> <!-- END DETAIL LELANG VIEW -->
+
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer class="bg-brand-900 text-white pt-16 pb-8 border-t border-brand-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-brand-800">
+                
+                <!-- Col 1: Logo & Summary -->
+                <div class="lg:col-span-2 space-y-4">
+                    <a href="#" onclick="showMainPage()" class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-orange-500 to-yellow-400 p-0.5 flex items-center justify-center shadow-md">
+                            <div class="w-full h-full bg-brand-900 rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-fire-flame-curved text-orange-400 text-lg"></i>
+                            </div>
+                        </div>
+                        <span class="font-extrabold text-xl tracking-tight text-white">Bid A Wheels</span>
+                    </a>
+
+                    <p class="text-gray-300 text-xs sm:text-sm leading-relaxed max-w-sm">
+                        Platform lelang diecast Hot Wheels terpercaya di Indonesia. Transaksi aman, koleksi 100% otentik, dan terhubung langsung dengan sesama kolektor.
+                    </p>
+
+                    <!-- Media Sosial Website -->
+                    <div class="flex items-center space-x-3 pt-2">
+                        <a href="#" title="WhatsApp" class="w-9 h-9 rounded-full bg-brand-800 hover:bg-emerald-600 text-white flex items-center justify-center transition">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
+                        </a>
+                        <a href="#" title="Instagram" class="w-9 h-9 rounded-full bg-brand-800 hover:bg-pink-600 text-white flex items-center justify-center transition">
+                            <i class="fa-brands fa-instagram text-sm"></i>
+                        </a>
+                        <a href="#" title="YouTube" class="w-9 h-9 rounded-full bg-brand-800 hover:bg-red-600 text-white flex items-center justify-center transition">
+                            <i class="fa-brands fa-youtube text-sm"></i>
+                        </a>
+                        <a href="#" title="X / Twitter" class="w-9 h-9 rounded-full bg-brand-800 hover:bg-gray-700 text-white flex items-center justify-center transition">
+                            <i class="fa-brands fa-x-twitter text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Col 2: NAVIGASI -->
+                <div>
+                    <h3 class="font-bold text-sm text-white uppercase tracking-wider mb-4 border-b border-brand-800 pb-2">Navigasi</h3>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-gray-300">
+                        <li><a href="#" onclick="showMainPage()" class="hover:text-white transition">Home</a></li>
+                        <li><a href="#live-lelang" onclick="showMainPage()" class="hover:text-white transition">Live Lelang</a></li>
+                        <li><a href="#lelang-mendatang" onclick="showMainPage()" class="hover:text-white transition">Lelang Mendatang</a></li>
+                        <li><a href="#panduan" onclick="showMainPage()" class="hover:text-white transition">Panduan</a></li>
+                        <li><a href="#artikel" onclick="showMainPage()" class="hover:text-white transition">Artikel</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: LAYANAN -->
+                <div>
+                    <h3 class="font-bold text-sm text-white uppercase tracking-wider mb-4 border-b border-brand-800 pb-2">Layanan</h3>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-white transition">Transaksi</a></li>
+                        <li><a href="#" class="hover:text-white transition">Pembayaran</a></li>
+                        <li><a href="#" class="hover:text-white transition">Pengiriman</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: DUKUNGAN -->
+                <div>
+                    <h3 class="font-bold text-sm text-white uppercase tracking-wider mb-4 border-b border-brand-800 pb-2">Dukungan</h3>
+                    <ul class="space-y-2.5 text-xs sm:text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-white transition">Pusat Bantuan</a></li>
+                        <li><a href="#" class="hover:text-white transition">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white transition">Syarat & Kebijakan</a></li>
+                        <li><a href="#" class="hover:text-white transition">Kebijakan Privasi</a></li>
+                        <li><a href="#" class="hover:text-white transition">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="pt-8 text-center text-xs text-gray-400">
+                <p>&copy; 2026 Bid A Wheels. All rights reserved. Built for Hot Wheels Enthusiasts.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- MODAL 1: Search Modal -->
+    <div id="searchModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-start justify-center pt-20 px-4">
+        <div class="bg-white rounded-2xl max-w-xl w-full p-6 shadow-2xl relative">
+            <div class="flex items-center justify-between pb-4 border-b border-gray-100">
+                <h3 class="font-bold text-gray-900 text-base">Cari Diecast Hot Wheels</h3>
+                <button onclick="toggleModal('searchModal')" class="text-gray-400 hover:text-gray-600">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <div class="mt-4 relative">
+                <input type="text" id="modalSearchInput" placeholder="Ketik nama car culture, RLC, seri, atau tahun..." class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-600">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-gray-400"></i>
+            </div>
+            <div class="mt-4">
+                <p class="text-xs font-semibold text-gray-500 uppercase">Pencarian Populer:</p>
+                <div class="flex flex-wrap gap-2 mt-2">
+                    <span onclick="applyQuickSearch('Porsche')" class="cursor-pointer text-xs bg-gray-100 hover:bg-brand-50 hover:text-brand-600 px-3 py-1 rounded-full text-gray-700">Porsche 959</span>
+                    <span onclick="applyQuickSearch('BMW')" class="cursor-pointer text-xs bg-gray-100 hover:bg-brand-50 hover:text-brand-600 px-3 py-1 rounded-full text-gray-700">BMW M3</span>
+                    <span onclick="applyQuickSearch('Pagani')" class="cursor-pointer text-xs bg-gray-100 hover:bg-brand-50 hover:text-brand-600 px-3 py-1 rounded-full text-gray-700">Pagani Huayra</span>
+                    <span onclick="applyQuickSearch('Shelby')" class="cursor-pointer text-xs bg-gray-100 hover:bg-brand-50 hover:text-brand-600 px-3 py-1 rounded-full text-gray-700">Shelby Cobra</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto custom-scroll">
+            <button onclick="toggleModal('loginModal')" class="absolute top-5 right-5 text-gray-400 hover:text-gray-600">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-full bg-brand-50 text-brand-600 flex items-center justify-center mx-auto mb-2 text-xl font-bold">
+                    <i class="fa-solid fa-user-lock"></i>
+                </div>
+                <h3 class="text-xl font-extrabold text-gray-900">Masuk ke Bid A Wheels</h3>
+                <p class="text-xs text-gray-500 mt-1">Masuk untuk memasang penawaran & memantau koleksi.</p>
+            </div>
+
+            <form onsubmit="handleLogin(event)" class="space-y-4">
+                <!-- Role Selector Toggle -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1.5">Role Akun</label>
+                    <div class="grid grid-cols-2 gap-2 bg-gray-100 p-1 rounded-xl">
+                        <button type="button" id="roleLoginPenawarBtn" onclick="selectLoginRole('penawar')" class="py-2 text-xs font-bold rounded-lg transition bg-white text-brand-900 shadow-sm">
+                            <i class="fa-solid fa-gavel mr-1"></i> Penawar / Buyer
+                        </button>
+                        <button type="button" id="roleLoginTokoBtn" onclick="selectLoginRole('toko')" class="py-2 text-xs font-bold rounded-lg transition text-gray-600 hover:text-gray-900">
+                            <i class="fa-solid fa-store mr-1"></i> Toko / Seller
+                        </button>
+                    </div>
+                    <input type="hidden" id="loginRoleInput" value="penawar">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Email / Username</label>
+                    <input type="text" required placeholder="kolektor@example.com" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-600">
+                </div>
+
+                <div>
+                    <div class="flex items-center justify-between mb-1">
+                        <label class="block text-xs font-bold text-gray-700">Password</label>
+                        <a href="javascript:void(0)" onclick="alert('Fitur Lupa Password: Silakan cek email Anda untuk reset password.')" class="text-xs font-semibold text-brand-600 hover:underline">Lupa password?</a>
+                    </div>
+                    <input type="password" required placeholder="••••••••" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-600">
+                </div>
+
+                <button type="submit" class="w-full bg-brand-900 hover:bg-brand-800 text-white font-extrabold py-3 rounded-xl transition text-sm shadow">
+                    Masuk Sekarang
+                </button>
+            </form>
+
+            <!-- Social Login Divider & Buttons -->
+            <div class="mt-6 pt-5 border-t border-gray-100 space-y-3">
+                <p class="text-[11px] text-center text-gray-400 font-medium">Atau masuk dengan alternatif lain:</p>
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="handleSocialAuth('Google')" class="flex items-center justify-center gap-2 py-2.5 border border-gray-200 hover:bg-gray-50 rounded-xl text-xs font-bold text-gray-700 transition">
+                        <i class="fa-brands fa-google text-red-500 text-sm"></i>
+                        <span>Google</span>
+                    </button>
+                    <button onclick="handleSocialAuth('Facebook')" class="flex items-center justify-center gap-2 py-2.5 border border-gray-200 hover:bg-gray-50 rounded-xl text-xs font-bold text-gray-700 transition">
+                        <i class="fa-brands fa-facebook text-blue-600 text-sm"></i>
+                        <span>Facebook</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Switch to Register Link -->
+            <div class="mt-6 text-center text-xs text-gray-600">
+                <span>Belum punya akun?</span>
+                <a href="javascript:void(0)" onclick="switchToRegister()" class="font-bold text-brand-600 hover:underline ml-1">Buat akun</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: Register Modal -->
+    <div id="registerModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto custom-scroll">
+            <button onclick="toggleModal('registerModal')" class="absolute top-5 right-5 text-gray-400 hover:text-gray-600">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-full bg-brand-50 text-brand-600 flex items-center justify-center mx-auto mb-2 text-xl font-bold">
+                    <i class="fa-solid fa-user-plus"></i>
+                </div>
+                <h3 class="text-xl font-extrabold text-gray-900">Buat Akun Baru</h3>
+                <p class="text-xs text-gray-500 mt-1">Daftar sekarang dan mulailah berburu diecast impian.</p>
+            </div>
+
+            <form onsubmit="handleRegister(event)" class="space-y-3.5">
+                <!-- Role Selector Toggle -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1.5">Pilih Role Akun</label>
+                    <div class="grid grid-cols-2 gap-2 bg-gray-100 p-1 rounded-xl">
+                        <button type="button" id="roleRegPenawarBtn" onclick="selectRegisterRole('penawar')" class="py-2 text-xs font-bold rounded-lg transition bg-white text-brand-900 shadow-sm">
+                            <i class="fa-solid fa-gavel mr-1"></i> Penawar / Buyer
+                        </button>
+                        <button type="button" id="roleRegTokoBtn" onclick="selectRegisterRole('toko')" class="py-2 text-xs font-bold rounded-lg transition text-gray-600 hover:text-gray-900">
+                            <i class="fa-solid fa-store mr-1"></i> Toko / Seller
+                        </button>
+                    </div>
+                    <input type="hidden" id="registerRoleInput" value="penawar">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Nama Lengkap</label>
+                    <input type="text" required placeholder="Ahmad Kolektor" class="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-600">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Username</label>
+                    <input type="text" required placeholder="ahmad_diecast" class="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-600">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">No. Handphone / WhatsApp</label>
+                    <input type="tel" required placeholder="08123456789" class="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-600">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Email</label>
+                    <input type="email" required placeholder="kolektor@example.com" class="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-600">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Password</label>
+                    <input type="password" required placeholder="••••••••" class="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-600">
+                </div>
+
+                <button type="submit" class="w-full bg-brand-900 hover:bg-brand-800 text-white font-extrabold py-3 rounded-xl transition text-sm shadow mt-2">
+                    Daftar Akun
+                </button>
+            </form>
+
+            <!-- Social Register Alternatives -->
+            <div class="mt-5 pt-4 border-t border-gray-100 space-y-2.5">
+                <p class="text-[11px] text-center text-gray-400 font-medium">Atau daftar dengan alternatif lain:</p>
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="handleSocialAuth('Google')" class="flex items-center justify-center gap-2 py-2.5 border border-gray-200 hover:bg-gray-50 rounded-xl text-xs font-bold text-gray-700 transition">
+                        <i class="fa-brands fa-google text-red-500 text-sm"></i>
+                        <span>Google</span>
+                    </button>
+                    <button onclick="handleSocialAuth('Facebook')" class="flex items-center justify-center gap-2 py-2.5 border border-gray-200 hover:bg-gray-50 rounded-xl text-xs font-bold text-gray-700 transition">
+                        <i class="fa-brands fa-facebook text-blue-600 text-sm"></i>
+                        <span>Facebook</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Switch to Login Link -->
+            <div class="mt-5 text-center text-xs text-gray-600">
+                <span>Sudah punya akun?</span>
+                <a href="javascript:void(0)" onclick="switchToLogin()" class="font-bold text-brand-600 hover:underline ml-1">Masuk</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MULTI-STEP BIDDING & PHONE VERIFICATION MODAL -->
+    <div id="interactiveBidModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto custom-scroll">
+            
+            <!-- Close Modal Button -->
+            <button onclick="closeInteractiveModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+
+            <!-- STEP 1: VERIFIKASI NO. HP (INPUT NO HP & METODE OTP) -->
+            <div id="modalStepPhoneInput" class="space-y-5">
+                <div class="text-center">
+                    <div class="w-14 h-14 rounded-full bg-blue-50 text-brand-600 flex items-center justify-center mx-auto mb-3 text-2xl font-bold shadow-sm">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-gray-900">Verifikasi No. HP</h3>
+                    <p class="text-xs text-gray-500 mt-1">Khusus penawar baru / belum terverifikasi. Masukkan nomor WhatsApp atau Handphone Anda.</p>
+                </div>
+
+                <div class="space-y-4 pt-2">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1.5">Nomor Handphone / WhatsApp</label>
+                        <div class="relative">
+                            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-xs font-bold text-gray-500">+62</span>
+                            <input type="tel" id="userPhoneInput" placeholder="81234567890" value="81234567890" class="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-600 font-semibold">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-2">Pilih Metode Pengiriman OTP</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label id="labelOtpWA" onclick="selectOtpMethod('WA')" class="flex items-center justify-center gap-2 p-3 bg-emerald-50 border-2 border-emerald-500 rounded-xl cursor-pointer text-xs font-bold text-emerald-800 transition">
+                                <input type="radio" name="otpMethod" value="WA" checked class="accent-emerald-600">
+                                <i class="fa-brands fa-whatsapp text-emerald-600 text-base"></i>
+                                <span>WhatsApp OTP</span>
+                            </label>
+                            <label id="labelOtpSMS" onclick="selectOtpMethod('SMS')" class="flex items-center justify-center gap-2 p-3 bg-gray-50 border-2 border-gray-200 rounded-xl cursor-pointer text-xs font-bold text-gray-700 hover:bg-gray-100 transition">
+                                <input type="radio" name="otpMethod" value="SMS" class="accent-brand-600">
+                                <i class="fa-solid fa-comment-sms text-brand-600 text-base"></i>
+                                <span>SMS OTP</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button onclick="sendOtpCode()" class="w-full bg-brand-900 hover:bg-brand-800 text-white font-bold py-3.5 rounded-xl transition text-sm shadow-md flex items-center justify-center gap-2">
+                        <span>Kirim Kode OTP</span>
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 2: MASUKKAN KODE OTP & TIMER KADALUARSA -->
+            <div id="modalStepOtpVerify" class="hidden space-y-5">
+                <div class="text-center">
+                    <div class="w-14 h-14 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center mx-auto mb-3 text-2xl font-bold shadow-sm">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-xl font-extrabold text-gray-900">Masukkan Kode OTP</h3>
+                    <p class="text-xs text-gray-500 mt-1">
+                        Kode verifikasi telah dikirimkan ke <span id="displayPhoneNo" class="font-bold text-gray-800">+62 812-3456-7890</span>.
+                    </p>
+                </div>
+
+                <div class="space-y-4 pt-2">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-2 text-center">Kode Verifikasi 6 Digit</label>
+                        <div class="flex justify-center gap-2">
+                            <input type="text" maxlength="6" id="otpCodeInput" placeholder="123456" class="w-48 text-center tracking-[0.5em] text-xl font-black py-2.5 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-600">
+                        </div>
+                        <p class="text-[11px] text-gray-400 text-center mt-2">Tips demo: Anda bisa memasukkan kode 6 digit bebas (misal: 123456).</p>
+                    </div>
+
+                    <!-- OTP Countdown Timer Display -->
+                    <div class="text-center bg-gray-50 p-3 rounded-xl border border-gray-200">
+                        <p class="text-xs text-gray-500 font-medium">Waktu tersisa kode OTP:</p>
+                        <p id="otpTimerCount" class="text-lg font-black text-brand-600 mt-0.5">00:30</p>
+                    </div>
+
+                    <button id="otpVerifyBtn" onclick="verifyOtpCode()" class="w-full bg-brand-900 hover:bg-brand-800 text-white font-bold py-3.5 rounded-xl transition text-sm shadow-md">
+                        Verifikasi
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 3: NO. HP BERHASIL DIVERIFIKASI (POSISI MASIH DI DETAIL LELANG) -->
+            <div id="modalStepPhoneSuccess" class="hidden text-center space-y-5 py-4">
+                <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto text-3xl font-bold shadow-md">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-extrabold text-gray-900">No. HP Berhasil Diverifikasi!</h3>
+                    <p class="text-xs text-gray-500 mt-1 max-w-sm mx-auto">
+                        Nomor Handphone Anda telah resmi terverifikasi. Sekarang Anda terdaftar sebagai penawar sah di Bid A Wheels.
+                    </p>
+                </div>
+
+                <div class="bg-emerald-50 border border-emerald-200 p-3.5 rounded-xl text-emerald-800 text-xs font-semibold">
+                    <i class="fa-solid fa-lock text-emerald-600 mr-1"></i> Posisi Anda tetap di Halaman Detail Lelang. Klik di bawah untuk melanjutkan Bidding.
+                </div>
+
+                <button onclick="proceedToBidForm()" class="w-full bg-brand-900 hover:bg-brand-800 text-white font-bold py-3.5 rounded-xl transition text-sm shadow-md flex items-center justify-center gap-2">
+                    <span>Lanjut Pasang Bid</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </button>
+            </div>
+
+            <!-- STEP 4: MODAL FORM PASANG BID (FOTO, NAMA, SKALA, KONDISI, METODE PEMBAYARAN KEBAWAH) -->
+            <div id="modalStepBidForm" class="hidden space-y-5">
+                <div class="border-b border-gray-100 pb-3 flex items-center justify-between">
+                    <h3 class="text-lg font-extrabold text-gray-900 flex items-center gap-2">
+                        <i class="fa-solid fa-gavel text-brand-600"></i>
+                        <span>Form Penawaran Bid</span>
+                    </h3>
+                    <span class="text-[10px] uppercase font-bold bg-emerald-100 text-emerald-700 px-2.5 py-0.5 rounded-full">
+                        Terverifikasi
+                    </span>
+                </div>
+
+                <!-- Car Item Summary Card -->
+                <div class="flex items-center gap-4 bg-gray-50 p-3.5 rounded-2xl border border-gray-200">
+                    <img id="bidFormItemImg" src="" alt="Car Preview" class="w-20 h-20 object-cover rounded-xl border border-gray-200 flex-shrink-0">
+                    <div class="overflow-hidden">
+                        <h4 id="bidFormItemTitle" class="font-bold text-gray-900 text-sm truncate">Nama Mobil Hot Wheels</h4>
+                        <div class="flex flex-wrap gap-1.5 mt-1">
+                            <span id="bidFormScale" class="text-[10px] font-bold bg-white text-gray-700 px-2 py-0.5 rounded border border-gray-200">Skala 1:64</span>
+                            <span id="bidFormCardCond" class="text-[10px] font-bold bg-white text-emerald-600 px-2 py-0.5 rounded border border-gray-200">Mint Card</span>
+                            <span id="bidFormCategory" class="text-[10px] font-bold bg-white text-brand-600 px-2 py-0.5 rounded border border-gray-200">RLC</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-1">
+                            Harga Saat Ini: <span id="bidFormCurrentPrice" class="font-extrabold text-brand-900 text-sm">Rp 548.000</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Minimum Bid Rule Info -->
+                    <div class="bg-amber-50 border border-amber-200 p-3 rounded-xl text-amber-800 text-xs flex items-center justify-between">
+                        <span class="font-medium flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle-info text-amber-600"></i>
+                            <span>Min. Bid Kelipatan:</span>
+                        </span>
+                        <span class="font-extrabold text-amber-900 bg-amber-100 px-2 py-0.5 rounded">Rp 3.000</span>
+                    </div>
+
+                    <!-- Quick Preset Buttons -->
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1.5">Preset Tambah Bid Cepat:</label>
+                        <div class="grid grid-cols-4 gap-2">
+                            <button type="button" onclick="addBidIncrement(3000)" class="py-2 bg-gray-100 hover:bg-brand-50 hover:text-brand-600 font-bold text-xs rounded-xl border border-gray-200 transition">
+                                + Rp 3k
+                            </button>
+                            <button type="button" onclick="addBidIncrement(6000)" class="py-2 bg-gray-100 hover:bg-brand-50 hover:text-brand-600 font-bold text-xs rounded-xl border border-gray-200 transition">
+                                + Rp 6k
+                            </button>
+                            <button type="button" onclick="addBidIncrement(15000)" class="py-2 bg-gray-100 hover:bg-brand-50 hover:text-brand-600 font-bold text-xs rounded-xl border border-gray-200 transition">
+                                + Rp 15k
+                            </button>
+                            <button type="button" onclick="addBidIncrement(30000)" class="py-2 bg-gray-100 hover:bg-brand-50 hover:text-brand-600 font-bold text-xs rounded-xl border border-gray-200 transition">
+                                + Rp 30k
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Nominal Input -->
+                    <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">Masukkan Nominal Bid Anda (Rp)</label>
+                        <div class="relative">
+                            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 font-bold text-sm text-gray-500">Rp</span>
+                            <input type="number" id="nominalBidInput" placeholder="Contoh: 551000" class="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-xl font-black text-base text-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-600">
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <label class="block text-xs font-bold text-gray-700">Pilih Metode Pembayaran (Jika Menang)</label>
+                            <a href="javascript:void(0)" onclick="alert('Menampilkan semua metode pembayaran yang tersedia.')" class="underline text-xs font-bold text-brand-600 hover:text-brand-800">Lihat semua &gt;</a>
+                        </div>
+                        
+                        <div class="flex flex-col gap-2.5">
+                            <label id="payOpt1" onclick="selectPaymentCard(1)" class="flex items-center justify-between p-3.5 bg-brand-50/50 border-2 border-brand-600 rounded-xl cursor-pointer hover:border-brand-600 transition">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-solid fa-wallet text-brand-600 text-lg w-6 text-center"></i>
+                                    <div>
+                                        <p class="text-xs font-bold text-gray-900">E-Wallet</p>
+                                        <p class="text-[10px] text-gray-500">GoPay, OVO, Dana, ShopeePay</p>
+                                    </div>
+                                </div>
+                                <input type="radio" name="payMethod" value="E-Wallet" checked class="accent-brand-600 w-4 h-4">
+                            </label>
+
+                            <label id="payOpt2" onclick="selectPaymentCard(2)" class="flex items-center justify-between p-3.5 bg-gray-50 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-brand-600 transition">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-solid fa-building-columns text-brand-600 text-lg w-6 text-center"></i>
+                                    <div>
+                                        <p class="text-xs font-bold text-gray-900">Transfer Bank / VA</p>
+                                        <p class="text-[10px] text-gray-500">BCA, Mandiri, BNI, BRI</p>
+                                    </div>
+                                </div>
+                                <input type="radio" name="payMethod" value="TF Bank" class="accent-brand-600 w-4 h-4">
+                            </label>
+
+                            <label id="payOpt3" onclick="selectPaymentCard(3)" class="flex items-center justify-between p-3.5 bg-gray-50 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-brand-600 transition">
+                                <div class="flex items-center gap-3">
+                                    <i class="fa-solid fa-qrcode text-brand-600 text-lg w-6 text-center"></i>
+                                    <div>
+                                        <p class="text-xs font-bold text-gray-900">QRIS Instant</p>
+                                        <p class="text-[10px] text-gray-500">Scan via m-Banking & e-Wallet</p>
+                                    </div>
+                                </div>
+                                <input type="radio" name="payMethod" value="QRIS" class="accent-brand-600 w-4 h-4">
+                            </label>
+                        </div>
+                    </div>
+
+                    <button onclick="submitFinalBid()" class="w-full bg-brand-900 hover:bg-brand-800 text-white font-extrabold py-3.5 rounded-xl transition text-sm shadow-lg flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-check-double"></i>
+                        <span>Konfirmasi Bid</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 5: POPUP BID BERHASIL DIKIRIM (DESKRIPSI + 3 CARDS + TUTUP) -->
+            <div id="modalStepBidSuccess" class="hidden space-y-6">
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-3 text-3xl font-extrabold shadow-md">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-gray-900">Bid Berhasil Dikirim!</h3>
+                    
+                    <!-- Short Description -->
+                    <p id="successBidDescription" class="text-xs sm:text-sm text-gray-600 mt-2 leading-relaxed max-w-md mx-auto">
+                        Bid kamu untuk <span class="font-bold text-gray-900">[Nama Item Mobil]</span> sebesar <span class="font-bold text-emerald-600">[Nominal]</span> telah berhasil dikirim!
+                    </p>
+                </div>
+
+                <!-- 3 CARDS FITUR LELANG SELESAI -->
+                <div class="space-y-3">
+                    <p class="text-xs font-bold uppercase text-gray-400 tracking-wider text-center">Langkah Selanjutnya Untuk Anda:</p>
+                    <div class="grid grid-cols-1 gap-3">
+                        
+                        <!-- Card 1 -->
+                        <div class="p-4 bg-gray-50 border border-gray-200 rounded-2xl flex items-start gap-3.5">
+                            <div class="w-10 h-10 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center text-lg flex-shrink-0 font-bold">
+                                <i class="fa-regular fa-bell"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-xs sm:text-sm">Pantau Status Lelang</h4>
+                                <p class="text-[11px] sm:text-xs text-gray-500 mt-0.5 leading-snug">
+                                    Sistem akan memberitahumu jika ada peserta lain yang memasang penawaran lebih tinggi.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="p-4 bg-gray-50 border border-gray-200 rounded-2xl flex items-start gap-3.5">
+                            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-lg flex-shrink-0 font-bold">
+                                <i class="fa-solid fa-trophy"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-xs sm:text-sm">Pengumuman Pemenang</h4>
+                                <p class="text-[11px] sm:text-xs text-gray-500 mt-0.5 leading-snug">
+                                    Jika kamu tetap menjadi penawar tertinggi hingga timer berakhir, kamu resmi memenangkan lelang.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="p-4 bg-gray-50 border border-gray-200 rounded-2xl flex items-start gap-3.5">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-lg flex-shrink-0 font-bold">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-xs sm:text-sm">Pembayaran Aman</h4>
+                                <p class="text-[11px] sm:text-xs text-gray-500 mt-0.5 leading-snug">
+                                    Pembayaran dilakukan via (E-Wallet, Transfer Bank, QRIS) untuk menjamin keamanan pengiriman diecast.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Close Modal Button -->
+                <button onclick="closeInteractiveModal()" class="w-full bg-brand-900 hover:bg-brand-800 text-white font-extrabold py-3.5 rounded-xl transition text-sm shadow-md">
+                    Tutup
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- JAVASCRIPT LOGIC & DATA -->
+    <script>
+        // AUCTION ITEMS DATA
+        const auctionData = [
+            {
+                id: 0,
+                title: "Hot Wheels x Supercar Blondie x Lamborghini Huracán LP 610-4",
+                category: "Supercar Series",
+                cardCondition: "Mint on Card (9.8/10)",
+                scale: "1:64",
+                startPrice: "Rp 448.000",
+                currentPrice: 548000,
+                currentPriceFormatted: "Rp 548.000",
+                bidCountText: "Naik Rp 100.000 (12 penawaran)",
+                seller: "Supercar Collector Indo",
+                rating: "4.9 / 5.0",
+                timerSec: 57540,
+                images: [
+                    "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1000&q=80"
+                ],
+                desc: "Diecast Hot Wheels Lamborghini Huracán LP 610-4 edisi spesial kolaborasi Supercar Blondie. Kondisi card sangat mulus tanpa crease, protektor mika tebal original Mattel included.",
+                bids: [
+                    { name: "Budi H.", amount: "Rp 548.000", time: "2 mnt lalu" },
+                    { name: "Andi P.", amount: "Rp 520.000", time: "10 mnt lalu" },
+                    { name: "Rian S.", amount: "Rp 480.000", time: "25 mnt lalu" }
+                ]
+            },
+            {
+                id: 1,
+                title: "RLC Exclusive sELECTIONs Porsche 959 Purple Edition",
+                category: "RLC Exclusive",
+                cardCondition: "Factory Sealed Mint",
+                scale: "1:64",
+                startPrice: "Rp 500.000",
+                currentPrice: 650000,
+                currentPriceFormatted: "Rp 650.000",
+                bidCountText: "Naik Rp 150.000 (15 penawaran)",
+                seller: "Diecast Garage Official",
+                rating: "5.0 / 5.0",
+                timerSec: 80400,
+                images: [
+                    "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1000&q=80"
+                ],
+                desc: "Red Line Club Exclusive sELECTIONs Porsche 959 warna Spectraflame Purple. Fitur kap mesin dapat dibuka dengan detail mesin penuh. Item terlangka koleksi 2024.",
+                bids: [
+                    { name: "Deni K.", amount: "Rp 650.000", time: "1 mnt lalu" },
+                    { name: "KolektorJKT", amount: "Rp 600.000", time: "15 mnt lalu" }
+                ]
+            },
+            {
+                id: 2,
+                title: "Hot Wheels x Robert Lewandowski x 1997 Porsche 911 GT1",
+                category: "Collector Edition",
+                cardCondition: "Mint Condition (9.5/10)",
+                scale: "1:64",
+                startPrice: "Rp 448.000",
+                currentPrice: 580000,
+                currentPriceFormatted: "Rp 580.000",
+                bidCountText: "Naik Rp 132.000 (10 penawaran)",
+                seller: "RLC Master Store",
+                rating: "4.8 / 5.0",
+                timerSec: 73805,
+                images: [
+                    "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1541348263662-e082662d82da?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1000&q=80"
+                ],
+                desc: "Edisi Khusus Lewandowski Porsche 911 GT1 1997. Livery eksklusif dengan base besi dan ban karet Real Riders. Wajib dimiliki bagi penggemar Porsche Le Mans.",
+                bids: [
+                    { name: "Toni S.", amount: "Rp 580.000", time: "5 mnt lalu" },
+                    { name: "SurabayaDiecast", amount: "Rp 550.000", time: "30 mnt lalu" }
+                ]
+            },
+            {
+                id: 3,
+                title: "Hot Wheels RLC Exclusive 1991 BMW M3 E30 Olive Gold",
+                category: "Vintage Series",
+                cardCondition: "Mint on Card (9.9/10)",
+                scale: "1:64",
+                startPrice: "Rp 600.000",
+                currentPrice: 720000,
+                currentPriceFormatted: "Rp 720.000",
+                bidCountText: "Naik Rp 120.000 (20 penawaran)",
+                seller: "Bimmer Collectibles",
+                rating: "4.9 / 5.0",
+                timerSec: 63010,
+                images: [
+                    "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=80"
+                ],
+                desc: "RLC BMW M3 E30 ikonik dengan warna Olive Gold Spectraflame. Pintu dapat dibuka, velg murni Real Riders 5-spoke.",
+                bids: [
+                    { name: "Hendra W.", amount: "Rp 720.000", time: "12 mnt lalu" }
+                ]
+            },
+            {
+                id: 4,
+                title: "Hot Wheels RLC Exclusive '21 Pagani Huayra R Silver",
+                category: "Hypercar Series",
+                cardCondition: "Mint in Acrylic Case",
+                scale: "1:64",
+                startPrice: "Rp 600.000",
+                currentPrice: 810000,
+                currentPriceFormatted: "Rp 810.000",
+                bidCountText: "Naik Rp 210.000 (30 penawaran)",
+                seller: "Exotic Diecast World",
+                rating: "5.0 / 5.0",
+                timerSec: 46945,
+                images: [
+                    "https://images.unsplash.com/photo-1541348263662-e082662d82da?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80"
+                ],
+                desc: "Pagani Huayra R edisi trek balap. Detail mesin V12 belakang terlindungi casing mika bening eksklusif RLC.",
+                bids: [
+                    { name: "Kevin T.", amount: "Rp 810.000", time: "3 mnt lalu" }
+                ]
+            },
+            {
+                id: 5,
+                title: "Hot Wheels RLC Exclusive 1965 Shelby Cobra 427 S/C",
+                category: "Classic Muscle",
+                cardCondition: "Mint on Card (9.7/10)",
+                scale: "1:64",
+                startPrice: "Rp 500.000",
+                currentPrice: 640000,
+                currentPriceFormatted: "Rp 640.000",
+                bidCountText: "Naik Rp 140.000 (25 penawaran)",
+                seller: "Classic American Diecast",
+                rating: "4.9 / 5.0",
+                timerSec: 21341,
+                images: [
+                    "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80"
+                ],
+                desc: "Shelby Cobra 427 S/C warna biru legendaris dengan stripe putih. Kap mesin depan bisa dibuka.",
+                bids: [
+                    { name: "Agus R.", amount: "Rp 640.000", time: "8 mnt lalu" }
+                ]
+            }
+        ];
+
+        // GLOBAL STATE TRACKING
+        let currentActiveItem = auctionData[0];
+        let isUserPhoneVerified = false; // Simulated status verification
+        let otpCountdownInterval = null;
+
+        // UI SWAP FUNCTION: Show Main Catalog Page
+        function showMainPage() {
+            document.getElementById('mainPageContainer').classList.remove('hidden');
+            document.getElementById('detailPageContainer').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // UI SWAP FUNCTION: Open Detailed Product Page
+        function openDetailView(index) {
+            const item = auctionData[index] || auctionData[0];
+            currentActiveItem = item;
+
+            // Update Breadcrumb & Titles
+            document.getElementById('detailBreadcrumbName').innerText = item.title;
+            document.getElementById('detailTitle').innerText = item.title;
+            document.getElementById('detailBadgeCategory').innerText = item.category;
+            document.getElementById('detailCategoryBadge').innerText = item.category;
+
+            // Update Specs
+            document.getElementById('specItemName').innerText = item.title;
+            document.getElementById('specScale').innerText = item.scale;
+            document.getElementById('specCardCondition').innerText = item.cardCondition;
+            document.getElementById('specCategory').innerText = item.category;
+            document.getElementById('detailDescription').innerText = item.desc;
+
+            // Update Prices
+            document.getElementById('detailStartPrice').innerText = item.startPrice;
+            document.getElementById('detailCurrentPrice').innerText = item.currentPriceFormatted;
+            document.getElementById('detailBidCountText').innerText = item.bidCountText;
+
+            // Update Seller
+            document.getElementById('sellerStoreName').innerText = item.seller;
+            document.getElementById('sellerRating').innerText = item.rating;
+
+            // Update Images
+            document.getElementById('detailMainImg').src = item.images[0];
+            item.images.forEach((imgUrl, i) => {
+                const thumbElem = document.getElementById(`thumbImg${i}`);
+                if(thumbElem) thumbElem.src = imgUrl;
+            });
+
+            // Update History Bids
+            const historyContainer = document.getElementById('detailBidHistoryList');
+            historyContainer.innerHTML = item.bids.map((b, idx) => `
+                <div class="flex justify-between items-center ${idx===0?'bg-brand-50/80 p-2 rounded-lg font-bold text-brand-900':'p-2 rounded-lg text-gray-600'}">
+                    <span>${b.name}</span>
+                    <span>${b.amount}</span>
+                    <span class="text-[10px] text-gray-400 font-normal">${b.time}</span>
+                </div>
+            `).join('');
+
+            // Hide Main & Show Detail Page
+            document.getElementById('mainPageContainer').classList.add('hidden');
+            document.getElementById('detailPageContainer').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Gallery Thumbnail Picker Logic
+        function selectGalleryImg(imgIndex) {
+            if(!currentActiveItem || !currentActiveItem.images[imgIndex]) return;
+            document.getElementById('detailMainImg').src = currentActiveItem.images[imgIndex];
+
+            const thumbs = document.querySelectorAll('.thumb-btn');
+            thumbs.forEach((btn, idx) => {
+                if(idx === imgIndex) {
+                    btn.classList.add('border-brand-600');
+                    btn.classList.remove('border-transparent', 'opacity-70');
+                } else {
+                    btn.classList.remove('border-brand-600');
+                    btn.classList.add('border-transparent', 'opacity-70');
+                }
+            });
+        }
+
+        // HANDLE PRIMARY "PASANG BID SEKARANG" BUTTON CLICK
+        function handlePasangBidClick() {
+            // Open Modal container
+            document.getElementById('interactiveBidModal').classList.remove('hidden');
+
+            if (!isUserPhoneVerified) {
+                // Show Step 1: Input Phone No & Select OTP
+                showModalStep('modalStepPhoneInput');
+            } else {
+                // If already verified, jump straight to Bid Form (Step 4)
+                setupAndShowBidForm();
+            }
+        }
+
+        // SWITCH BETWEEN STEPS IN MODAL
+        function showModalStep(stepId) {
+            ['modalStepPhoneInput', 'modalStepOtpVerify', 'modalStepPhoneSuccess', 'modalStepBidForm', 'modalStepBidSuccess'].forEach(id => {
+                const el = document.getElementById(id);
+                if(el) el.classList.add('hidden');
+            });
+            document.getElementById(stepId).classList.remove('hidden');
+        }
+
+        // OTP METHOD SELECTION STYLING TOGGLE FIX
+        function selectOtpMethod(method) {
+            const labelWA = document.getElementById('labelOtpWA');
+            const labelSMS = document.getElementById('labelOtpSMS');
+
+            if (method === 'WA') {
+                labelWA.className = "flex items-center justify-center gap-2 p-3 bg-emerald-50 border-2 border-emerald-500 rounded-xl cursor-pointer text-xs font-bold text-emerald-800 transition";
+                labelSMS.className = "flex items-center justify-center gap-2 p-3 bg-gray-50 border-2 border-gray-200 rounded-xl cursor-pointer text-xs font-bold text-gray-700 hover:bg-gray-100 transition";
+            } else {
+                labelSMS.className = "flex items-center justify-center gap-2 p-3 bg-brand-50 border-2 border-brand-600 rounded-xl cursor-pointer text-xs font-bold text-brand-900 transition";
+                labelWA.className = "flex items-center justify-center gap-2 p-3 bg-gray-50 border-2 border-gray-200 rounded-xl cursor-pointer text-xs font-bold text-gray-700 hover:bg-gray-100 transition";
+            }
+        }
+
+        // STEP 1 -> STEP 2: SEND OTP CODE & START COUNTDOWN
+        function sendOtpCode() {
+            const phoneInput = document.getElementById('userPhoneInput').value;
+            if(!phoneInput) {
+                alert('Silakan masukkan nomor handphone Anda.');
+                return;
+            }
+            document.getElementById('displayPhoneNo').innerText = `+62 ${phoneInput}`;
+            showModalStep('modalStepOtpVerify');
+
+            // Start 30 Seconds Timer
+            let secondsLeft = 30;
+            const timerDisplay = document.getElementById('otpTimerCount');
+            timerDisplay.innerText = `00:30`;
+
+            if(otpCountdownInterval) clearInterval(otpCountdownInterval);
+            otpCountdownInterval = setInterval(() => {
+                secondsLeft--;
+                if(secondsLeft >= 0) {
+                    timerDisplay.innerText = `00:${secondsLeft < 10 ? '0' : ''}${secondsLeft}`;
+                } else {
+                    clearInterval(otpCountdownInterval);
+                    timerDisplay.innerText = "Kode Kadaluarsa. Kirim ulang.";
+                }
+            }, 1000);
+        }
+
+        // STEP 2 -> STEP 3: VERIFY OTP CODE
+        function verifyOtpCode() {
+            const code = document.getElementById('otpCodeInput').value;
+            if(!code || code.length < 4) {
+                alert('Masukkan kode OTP 6 digit.');
+                return;
+            }
+            if(otpCountdownInterval) clearInterval(otpCountdownInterval);
+
+            // Mark phone as verified
+            isUserPhoneVerified = true;
+            showModalStep('modalStepPhoneSuccess');
+        }
+
+        // STEP 3 -> STEP 4: PROCEED TO BID FORM
+        function proceedToBidForm() {
+            setupAndShowBidForm();
+        }
+
+        // SETUP DATA FOR STEP 4 (BID FORM)
+        function setupAndShowBidForm() {
+            const item = currentActiveItem;
+            document.getElementById('bidFormItemImg').src = item.images[0];
+            document.getElementById('bidFormItemTitle').innerText = item.title;
+            document.getElementById('bidFormScale').innerText = `Skala ${item.scale}`;
+            document.getElementById('bidFormCardCond').innerText = item.cardCondition;
+            document.getElementById('bidFormCategory').innerText = item.category;
+            document.getElementById('bidFormCurrentPrice').innerText = item.currentPriceFormatted;
+
+            // Default suggested nominal = current price + 3000
+            const minBidVal = item.currentPrice + 3000;
+            document.getElementById('nominalBidInput').value = minBidVal;
+
+            showModalStep('modalStepBidForm');
+        }
+
+        // PAYMENT CARD SELECTION STYLING TOGGLE
+        function selectPaymentCard(index) {
+            [1, 2, 3].forEach(i => {
+                const card = document.getElementById(`payOpt${i}`);
+                if (i === index) {
+                    card.className = "flex items-center justify-between p-3.5 bg-brand-50/50 border-2 border-brand-600 rounded-xl cursor-pointer hover:border-brand-600 transition";
+                } else {
+                    card.className = "flex items-center justify-between p-3.5 bg-gray-50 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-brand-600 transition";
+                }
+            });
+        }
+
+        // PRESET INCREMENT BUTTONS FOR BID FORM
+        function addBidIncrement(amount) {
+            const inputField = document.getElementById('nominalBidInput');
+            let val = parseInt(inputField.value) || currentActiveItem.currentPrice;
+            inputField.value = val + amount;
+        }
+
+        // STEP 4 -> STEP 5: SUBMIT FINAL BID
+        function submitFinalBid() {
+            const nominalVal = parseInt(document.getElementById('nominalBidInput').value);
+            if(!nominalVal || nominalVal <= currentActiveItem.currentPrice) {
+                alert(`Nominal bid harus lebih besar dari harga saat ini (${currentActiveItem.currentPriceFormatted}).`);
+                return;
+            }
+
+            const formattedNominal = "Rp " + nominalVal.toLocaleString('id-ID');
+
+            // Update State with New Highest Bid
+            currentActiveItem.currentPrice = nominalVal;
+            currentActiveItem.currentPriceFormatted = formattedNominal;
+            currentActiveItem.bids.unshift({
+                name: "Anda (Penawar)",
+                amount: formattedNominal,
+                time: "Baru saja"
+            });
+
+            // Update UI elements in Detail View
+            document.getElementById('detailCurrentPrice').innerText = formattedNominal;
+            openDetailView(currentActiveItem.id);
+
+            // Set Description Text in Success Step 5
+            document.getElementById('successBidDescription').innerHTML = 
+                `Bid kamu untuk <span class="font-bold text-gray-900">${currentActiveItem.title}</span> sebesar <span class="font-bold text-emerald-600">${formattedNominal}</span> telah berhasil dikirim!`;
+
+            showModalStep('modalStepBidSuccess');
+        }
+
+        // CLOSE INTERACTIVE MODAL RESET
+        function closeInteractiveModal() {
+            document.getElementById('interactiveBidModal').classList.add('hidden');
+        }
+
+        // ROLE SELECTION IN LOGIN & REGISTER MODALS
+        function selectLoginRole(role) {
+            document.getElementById('loginRoleInput').value = role;
+            const buyerBtn = document.getElementById('roleLoginPenawarBtn');
+            const sellerBtn = document.getElementById('roleLoginTokoBtn');
+
+            if(role === 'penawar') {
+                buyerBtn.className = "py-2 text-xs font-bold rounded-lg transition bg-white text-brand-900 shadow-sm";
+                sellerBtn.className = "py-2 text-xs font-bold rounded-lg transition text-gray-600 hover:text-gray-900";
+            } else {
+                sellerBtn.className = "py-2 text-xs font-bold rounded-lg transition bg-white text-brand-900 shadow-sm";
+                buyerBtn.className = "py-2 text-xs font-bold rounded-lg transition text-gray-600 hover:text-gray-900";
+            }
+        }
+
+        function selectRegisterRole(role) {
+            document.getElementById('registerRoleInput').value = role;
+            const buyerBtn = document.getElementById('roleRegPenawarBtn');
+            const sellerBtn = document.getElementById('roleRegTokoBtn');
+
+            if(role === 'penawar') {
+                buyerBtn.className = "py-2 text-xs font-bold rounded-lg transition bg-white text-brand-900 shadow-sm";
+                sellerBtn.className = "py-2 text-xs font-bold rounded-lg transition text-gray-600 hover:text-gray-900";
+            } else {
+                sellerBtn.className = "py-2 text-xs font-bold rounded-lg transition bg-white text-brand-900 shadow-sm";
+                buyerBtn.className = "py-2 text-xs font-bold rounded-lg transition text-gray-600 hover:text-gray-900";
+            }
+        }
+
+        // MODAL SWITCHERS: LOGIN <-> REGISTER
+        function switchToRegister() {
+            toggleModal('loginModal');
+            toggleModal('registerModal');
+        }
+
+        function switchToLogin() {
+            toggleModal('registerModal');
+            toggleModal('loginModal');
+        }
+
+        function handleSocialAuth(provider) {
+            alert(`Sistem login via ${provider} berhasil dihubungkan!`);
+            toggleModal('loginModal');
+            toggleModal('registerModal');
+        }
+
+        // GENERAL UTILITY FUNCTIONS
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if(modal) modal.classList.toggle('hidden');
+        }
+
+        function toggleDropdown(dropdownId) {
+            const dd = document.getElementById(dropdownId);
+            if(dd) dd.classList.toggle('hidden');
+        }
+
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobileNav');
+            if(nav) nav.classList.toggle('hidden');
+        }
+
+        function scrollToLiveAuction() {
+            showMainPage();
+            document.getElementById('live-lelang').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            alert('Login berhasil! Selamat datang kembali di Bid A Wheels.');
+            toggleModal('loginModal');
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            alert('Pendaftaran berhasil! Akun Anda telah dibuat. Silakan masuk.');
+            switchToLogin();
+        }
+
+        function reminderAlert(itemName) {
+            alert(`Pengingat berhasil dipasang untuk: ${itemName}. Kami akan mengabari Anda 15 menit sebelum lelang dimulai.`);
+        }
+
+        function triggerSellerChat() {
+            alert(`Membuka percakapan langsung dengan Toko: ${currentActiveItem.seller}`);
+        }
+
+        function toggleFavorite(btn) {
+            const icon = btn.querySelector('i');
+            if(icon.classList.contains('fa-regular')) {
+                icon.classList.remove('fa-regular');
+                icon.classList.add('fa-solid', 'text-red-500');
+            } else {
+                icon.classList.remove('fa-solid', 'text-red-500');
+                icon.classList.add('fa-regular');
+            }
+        }
+
+        function toggleBookmark(btn) {
+            const icon = btn.querySelector('i');
+            if(icon.classList.contains('fa-regular')) {
+                icon.classList.remove('fa-regular');
+                icon.classList.add('fa-solid', 'text-amber-400');
+            } else {
+                icon.classList.remove('fa-solid', 'text-amber-400');
+                icon.classList.add('fa-regular');
+            }
+        }
+
+        function applyQuickSearch(term) {
+            document.getElementById('modalSearchInput').value = term;
+        }
+
+        function moveTestimonial(direction) {
+            const container = document.getElementById('testiContainer');
+            container.classList.add('opacity-50');
+            setTimeout(() => {
+                container.classList.remove('opacity-50');
+            }, 300);
+        }
+
+        // REALTIME COUNTDOWN TIMERS TICKER
+        setInterval(() => {
+            const timers = document.querySelectorAll('.timer-countdown');
+            timers.forEach(timer => {
+                let sec = parseInt(timer.getAttribute('data-seconds'));
+                if (sec > 0) {
+                    sec--;
+                    timer.setAttribute('data-seconds', sec);
+                    const h = Math.floor(sec / 3600);
+                    const m = Math.floor((sec % 3600) / 60);
+                    const s = sec % 60;
+                    timer.innerText = `${h<10?'0':''}${h}:${m<10?'0':''}${m}:${s<10?'0':''}${s}`;
+                }
+            });
+        }, 1000);
+    </script>
+</body>
+</html>
